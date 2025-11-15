@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warunk Milenial - Menu</title>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Memuat Inter Font (Mirip dengan gaya modern Nike) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Skrip ikon yang menyebabkan error telah dihapus dari sini -->
+
+    <style>
+        /* Mengatur font default ke Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        /* Gaya untuk header yang "beku" / sticky */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(17, 17, 17, 0.8); /* Latar belakang semi-transparan */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Latar belakang video */
+        .video-background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-background {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.3); /* Membuat video lebih gelap agar teks terbaca */
+        }
+
+        /* Menyembunyikan halaman menu secara default */
+        .menu-page {
+            display: none;
+            padding-top: 100px; /* Memberi ruang untuk header sticky */
+            min-height: 100vh;
+        }
+
+        /* Menampilkan halaman yang aktif */
+        .menu-page.active {
+            display: block;
+        }
+
+        /* Efek animasi garis bawah (lalu-lalang) */
+        .animated-underline {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            padding-bottom: 4px;
+        }
+
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%; 
+            width: 100%;
+            height: 2px;
+            background-color: #fde047; 
+            animation: slide-in-out 3s ease-in-out infinite;
+        }
+
+        @keyframes slide-in-out {
+            0% {
+                left: -100%;
+            }
+            50% {
+                left: 0;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Animasi slide-in dari kanan */
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Gaya untuk slider menu horizontal */
+        .menu-slider {
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;  /* IE dan Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .menu-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        /* Highlighting untuk search */
+        .highlight {
+            background-color: #fde047;
+            color: #111;
+        }
+
+        /* Search bar styling */
+        .search-bar {
+            background-color: #222;
+            border: 1px solid #333;
+        }
+        .search-bar input {
+            background-color: transparent;
+            color: #fff;
+        }
+        .search-bar input::placeholder {
+            color: #777;
+        }
+
+        /* Animasi untuk search bar jika tidak ketemu */
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+          20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake-search {
+          animation: shake 0.5s ease-in-out;
+        }
+
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- == HEADER == -->
+    <header class="sticky-header py-4 px-4 md:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#page-utama" class="text-2xl md:text-3xl font-black uppercase tracking-wider page-link">
+                Warunk Milenial
+             <img src="logowm1.png" alt="Warunk Milenial" class="h-10">
+            </a>
+
+            <!-- Navigasi Tengah -->
+            <nav class="hidden md:flex gap-6 lg:gap-10">
+                <a href="#page-minuman" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Minuman</a>
+                <a href="#page-menu-lokalan" class="text-lg font-medium text-gray-300 hover:text-white transition-colors page-link">Makanan Berat</a>
+                <a href="#page-cemilan" class="text-lg font-medium text-gray-300 hover:text-white transition-colors page-link">Makanan Ringan</a>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="search-bar flex items-center rounded-full py-2 px-4" id="search-container">
+                <input type="search" id="search-input" placeholder="Ketik disini;Contoh'Es Teler'" class="outline-none border-none w-24 md:w-48 transition-all duration-300 focus:w-32 md:focus:w-64">
+                <button id="search-button" aria-label="Cari">
+                    <!-- Ikon Search -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Navigasi Mobile (Tampil di layar kecil) -->
+        <nav class="md:hidden flex justify-center gap-6 mt-4">
+            <a href="#page-minuman" class="text-base font-medium text-gray-300 hover:text-white transition-colors">Minuman</a>
+            <a href="#page-menu-lokalan" class="text-base font-medium text-gray-300 hover:text-white transition-colors page-link">Makanan Berat</a>
+            <a href="#page-cemilan" class="text-base font-medium text-gray-300 hover:text-white transition-colors page-link">Makanan Ringan</a>
+        </nav>
+    </header>
+    <!-- == END HEADER == -->
+
+    <!-- == Wadah untuk semua "halaman" == -->
+    <main>
+        <section id="page-utama" class="menu-page active" style="padding-top: 0;">
+            <div class="video-background-container">
+                <video class="video-background" autoplay loop muted playsinline
+                    src="wm.mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+
+            <!-- Konten di atas video -->
+            <div class="relative h-screen flex flex-col justify-center items-center text-center px-4">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
+                    Selamat Datang
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mt-4" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);">
+                    Silahkan pilih menu kesukaanmu🙌.
+                </p>
+            </div>
+
+            <!-- Daftar Menu Section -->
+            <div class="container mx-auto px-4 py-16 md:py-24">
+                 <div class="mb-16">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl md:text-4xl font-bold">Best Seller</h2>
+                        <div class="flex gap-2">
+                            <button class="slider-btn-prev bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-best" aria-label="Geser Kiri">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button class="slider-btn-next bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-best aria-label="Geser Kanan">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="slider-best" class="menu-slider flex overflow-x-auto gap-4 md:gap-6 py-4">
+                        <!-- 5 Template Fast Food -->
+                        <a  class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="igamoza.png" alt="Fast Food 1" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">IGA BAKAR MOZARELLA</h3><h3 class="text-yellow-400"> ONLY 60K</h3><p class="text-gray-400">Premium Flavour</p></div>
+                        </a>
+                        <a  class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="hotplacumi.png" alt="Fast Food 2" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">HOTPLATE CUMI CUMI</h3><h3 class="text-yellow-400"> ONLY 38K</h3><p class="text-gray-400">Rasakan Panasnya Cumi yang berenang di laut Api</p></div>
+                        </a>
+                        <a  class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="steamboatbest.png" alt="Fast Food 3" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">STEAMBOAT MIX PARTY</h3><h3 class="text-yellow-400"> ONLY 90K</h3><p class="text-gray-400">Cocok untuk ramai-ramai</p></div>
+                        </a>
+                        <a  class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="kopisusubuter.jpg" alt="Fast Food 4" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">BUTTER COFFEE MILK</h3><h3 class="text-yellow-400"> ONLY 20K</h3><p class="text-gray-400">Rasa Premium bikin terus Minum</p></div>
+                        </a>
+                        <a  class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="cookiesfrappe.png" alt="Fast Food 5" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">COOKIES FRAPE</h3><h3 class="text-yellow-400"> ONLY 38K</h3><p class="text-gray-400">Minuman rasa Chookies yang bikin kamu GOOD MOOD seketika</p></div>
+                        </a>
+                    </div>
+                </div>
+                        <!--lokalan-->
+                <div class="mb-16">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl md:text-4xl font-bold">Menu Lokal</h2>
+                        <div class="flex gap-2">
+                            <button class="slider-btn-prev bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-lokalan" aria-label="Geser Kiri">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button class="slider-btn-next bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-lokalan" aria-label="Geser Kanan">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="slider-lokalan" class="menu-slider flex overflow-x-auto gap-4 md:gap-6 py-4">
+                        <!-- Template Item 1 -->
+                        <a href="#page-menu-lokalan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logosoto.png" alt="Menu Lokalan 1" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4">
+                                <h3 class="text-xl font-semibold">Sop,Soto & Tongseng</h3>
+                                <p class="text-gray-400">Aneka Kuah yang segar</p>
+                            </div>
+                        </a>
+                        <!-- Template Item 2 -->
+                        <a href="#page-menu-lokalan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logonasgor.png" alt="Menu Lokalan 2" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4">
+                                <h3 class="text-xl font-semibold">Nasi Goreng</h3>
+                                <p class="text-gray-400">Berbagai pilihan nasi goreng</p>
+                            </div>
+                        </a>
+                        <!-- Template Item 3 -->
+                        <a href="#page-menu-lokalan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logoayam.png" alt="Menu Lokalan 3" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4">
+                                <h3 class="text-xl font-semibold">Aneka Ayam & Bebek</h3>
+                                <p class="text-gray-400">Goreng, bakar, dan lainnya</p>
+                            </div>
+                        </a>
+                        <!-- Template Item 4 -->
+                        <a href="#page-menu-lokalan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logomie.png" alt="Menu Lokalan 4" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4">
+                                <h3 class="text-xl font-semibold">Mie & Kwetiaw</h3>
+                                <p class="text-gray-400">Pilihan mie, bihun, dan kwetiaw</p>
+                            </div>
+                        </a>
+                        <!-- Template Item 5 -->
+                        <a href="#page-menu-lokalan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logosea.png" alt="Menu Lokalan 5" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4">
+                                <h3 class="text-xl font-semibold">Udang & Cumi</h3>
+                                <p class="text-gray-400">Menu seafood spesial</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gambar Slide-in -->
+                <div class="py-16 overflow-hidden"> 
+                    <div id="animated-image-container" class="slide-in-right">
+                        <img src="logowm1.png" 
+                             alt="Sambutan Warunk Milenial" 
+                             class="w-full h-auto rounded-lg object-cover">
+                    </div>
+                </div>
+
+                <!-- Slider Fast Food -->
+                <div class="mb-16">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl md:text-4xl font-bold">Fast Food/Makanan Luar</h2>
+                        <div class="flex gap-2">
+                            <button class="slider-btn-prev bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-fastfood" aria-label="Geser Kiri">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button class="slider-btn-next bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-fastfood" aria-label="Geser Kanan">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="slider-fastfood" class="menu-slider flex overflow-x-auto gap-4 md:gap-6 py-4">
+                        <!-- 5 Template Fast Food -->
+                        <a href="#page-fast-food" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logoburger.png" alt="Fast Food 1" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Burger</h3><p class="text-gray-400">Pilihan burger juicy</p></div>
+                        </a>
+                        <a href="#page-fast-food" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logopiza.png" alt="Fast Food 2" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Pizza</h3><p class="text-gray-400">Pizza dengan toping daging yang Nikmat</p></div>
+                        </a>
+                        <a href="#page-fast-food" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logosteak.png" alt="Fast Food 3" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Steak & Hot Plate</h3><p class="text-gray-400">Sajian panas dan lezat</p></div>
+                        </a>
+                        <a href="#page-fast-food" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logopasta.png" alt="Fast Food 4" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Pasta</h3><p class="text-gray-400">Spagheti dan lainnya</p></div>
+                        </a>
+                        <a href="#page-fast-food" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logorb.png" alt="Fast Food 5" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Rice Bowl</h3><p class="text-gray-400">Praktis,Sehat dan mengenyangkan</p></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slider Cemilan -->
+                <div class="mb-16">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl md:text-4xl font-bold">Cemilan/Side Dish</h2>
+                        <div class="flex gap-2">
+                            <button class="slider-btn-prev bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-cemilan" aria-label="Geser Kiri">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button class="slider-btn-next bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-cemilan" aria-label="Geser Kanan">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="slider-cemilan" class="menu-slider flex overflow-x-auto gap-4 md:gap-6 py-4">
+                        <!-- 5 Template Cemilan -->
+                        <a href="#page-cemilan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logokentang.png" alt="Cemilan 1" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Kentang & Singkong</h3><p class="text-gray-400">Goreng renyah</p></div>
+                        </a>
+                        <a href="#page-cemilan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logoroti.png" alt="Cemilan 2" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Roti & Pisang Bakar</h3><p class="text-gray-400">Manis dan lezat</p></div>
+                        </a>
+                        <a href="#page-cemilan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logomilen.png" alt="Cemilan 3" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Snack Milenial</h3><p class="text-gray-400">Cireng, mendoan, dll.</p></div>
+                        </a>
+                        <a href="#page-cemilan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logososis.png" alt="Cemilan 4" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Sosis & Lumpia</h3><p class="text-gray-400">Cemilan gurih</p></div>
+                        </a>
+                        <a href="#page-cemilan" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="logotahu.png" alt="Cemilan 5" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Olahan Tahu</h3><p class="text-gray-400">Tahu jerit, tahu bakso</p></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slider Minuman (BARU) -->
+                <div class="mb-16">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl md:text-4xl font-bold">Minuman & Bar</h2>
+                        <div class="flex gap-2">
+                            <button class="slider-btn-prev bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-minuman" aria-label="Geser Kiri">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button class="slider-btn-next bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition" data-slider="slider-minuman" aria-label="Geser Kanan">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="slider-minuman" class="menu-slider flex overflow-x-auto gap-4 md:gap-6 py-4">
+                        <a href="#page-minuman" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="escampur.jpeg" alt="Minuman 1" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Minuman Segar</h3><p class="text-gray-400">Es Campur, Es Teler, dll.</p></div>
+                        </a>
+                        <a href="#page-minuman" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="strawberryfrizz.png" alt="Minuman 2" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Juice & Shakes</h3><p class="text-gray-400">Alpukat, All Milkshake Float, dll.</p></div>
+                        </a>
+                        <a href="#page-minuman" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="esdeganjeruk.jpeg" alt="Minuman 3" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Kelapa Muda</h3><p class="text-gray-400">Original, Jeruk, Susu</p></div>
+                        </a>
+                        <a href="#page-minuman" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="capucino.png" alt="Minuman 4" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Kopi</h3><p class="text-gray-400">Lihat menu kopi</p></div>
+                        </a>
+                        <a href="#page-minuman" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                            <img src="wedanguwuh.png" alt="Minuman 5" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gray-900 p-4"><h3 class="text-xl font-semibold">Non-Kopi</h3><p class="text-gray-400">Teh, Coklat, dll.</p></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Menu Tambahan -->
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Menu Tambahan</h2>
+                    <p class="text-lg text-gray-400 mb-6">Jangan lupa pesan nasi(*Menu makanan berat diatas belum include Nasi), sambal, atau tambahan lainnya.</p>
+                    <a href="#page-tambahan" class="page-link inline-block bg-yellow-400 text-black font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-300 transition-colors">
+                        Lihat Tambahan
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Footer Links -->
+            <footer class="bg-gray-900 py-16">
+                <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Menu Lain</h4>
+                        <ul>
+                            <li><a href="#page-minuman" class="page-link text-gray-400 hover:text-white transition">Menu Minum & Bar</a></li>
+                            <li><a href="#page-tambahan" class="page-link text-gray-400 hover:text-white transition">Menu Tambahan</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Layanan</h4>
+                        <ul>
+                            <li><a href="warunkmilenial@gmail.com" class="text-gray-400 hover:text-white transition" target="_blank" rel="noopener noreferrer">Masukan Saran</a></li>
+                            
+                        </ul>
+                        
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Ikuti Kami</h4>
+                        <div class="flex justify-center md:justify-start gap-4">
+                            <a href="https://www.instagram.com/warunkmilenial_pgk.real?igsh=MWFjdnU1b3VtenQxMw==" class="text-gray-400 hover:text-white transition" target="_blank" rel="noopener noreferrer">📸𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺</a>
+                            <a href="https://www.tiktok.com/@warunk_milenial_pgk?_r=1&_t=ZS-91JJyNw8JFc" class="text-gray-400 hover:text-white transition" target="_blank" rel="noopener noreferrer">📱𝗧𝗶𝗸𝗧𝗼𝗸</a>
+                            <a href="https://lynk.id/a112516515" class="text-gray-400 hover:text-white transition"target="_blank" rel="noopener noreferrer">Reservasi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-gray-500 mt-12 border-t border-gray-800 pt-8">
+                    &copy; <span id="current-year"></span> Warunk Milenial. All Rights Reserved.
+                </div>
+            </footer>
+        </section>
+        <!-- == END HALAMAN UTAMA == -->
+
+        
+        <!-- == HALAMAN MENU LOKALAN == -->
+        <section id="page-menu-lokalan" class="menu-page container mx-auto px-4 py-8">
+            <!-- Tombol Kembali -->
+            <a href="#page-utama" class="page-link inline-flex items-center gap-2 text-gray-300 hover:text-white transition mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Kembali ke Halaman Utama
+            </a>
+
+            <h1 class="text-4xl md:text-5xl font-black uppercase mb-12 text-center">Menu Lokalan (Makanan Berat)</h1>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Nasi Goreng</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+        
+                <div class="menu-item-card" id="menu-item-nasi-goreng-telur"><img src="NGTELUR.jpg" alt="Nasi Goreng Telur" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Telur</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-sosis"><img src="NGSOSIS.jpg" alt="Nasi Goreng Sosis" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Sosis</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-pete"><img src="NGPET.jpg" alt="Nasi Goreng Pete" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Pete</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-bakso"><img src="NGBAKS.jpg" alt="Nasi Goreng Bakso" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Bakso</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-ati-ampela"><img src="NGATI.jpg" alt="Nasi Goreng Ati Ampela" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Ati Ampela</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-ayam"><img src="NGYM.jpg" alt="Nasi Goreng Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-ikan-asin"><img src="NGIASIN.jpg" alt="Nasi Goreng Ikan Asin" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Ikan Asin</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-seafood"><img src="NGSFD.jpg" alt="Nasi Goreng Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Seafood</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-hongkong"><img src="NGHON.jpg" alt="Nasi Goreng Hongkong" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Hongkong</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-gila"><img src="NGGILA.jpg" alt="Nasi Goreng Gila" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Gila</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-nasi-goreng-special-wm"><img src="NGSPESIAL.jpg" alt="Nasi Goreng Special WM" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Nasi Goreng Special WM</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Mie & Bihun Goreng</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <!-- Data dari PDF -->
+                <div class="menu-item-card" id="menu-item-mie-goreng-telur"><img src="MIGTELUR.jpg" alt="Mie Goreng Telur" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mie Goreng Telur</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-mie-goreng-pete"><img src="MIGPET.jpg" alt="Mie Goreng Pete" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mie Goreng Pete</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-mie-goreng-ati-ampela"><img src="MIGATI.jpg" alt="Mie Goreng Ati Ampela" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mie Goreng Ati Ampela</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-mie-goreng-ayam"><img src="MIGAYAM.jpg" alt="Mie Goreng Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mie Goreng Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-mie-goreng-seafood"><img src="MIGSFD.jpg" alt="Mie Goreng Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mie Goreng Seafood</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-mie-goreng-sapi"><img src="MIGSAPI.jpg" alt="Mie Goreng Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mie Goreng Sapi</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-mie-goreng-gila"><img src="MIGPDS.jpg" alt="Mie Goreng Gila" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mie Goreng Gila</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-mie-goreng-special-wm"><img src="MIGSPESIAL.jpg" alt="Mie Goreng Special WM" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mie Goreng Special WM</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bihun-goreng-telur"><img src="BIGTELUR.jpg" alt="Bihun Goreng Telur" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bihun Goreng Telur</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bihun-goreng-pete"><img src="BIGPET.jpg" alt="Bihun Goreng Pete" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bihun Goreng Pete</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bihun-goreng-ati-ampela"><img src="BIGATI.jpg" alt="Bihun Goreng Ati Ampela" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bihun Goreng Ati Ampela</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bihun-goreng-ayam"><img src="BIGYM.jpg" alt="Bihun Goreng Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bihun Goreng Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bihun-goreng-seafood"><img src="BIGSFD.jpg" alt="Bihun Goreng Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bihun Goreng Seafood</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bihun-goreng-sapi"><img src="BIGDGN.jpg" alt="Bihun Goreng Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bihun Goreng Sapi</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bihun-goreng-gila"><img src="BIGILA.jpg" alt="Bihun Goreng Gila" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bihun Goreng Gila</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bihun-goreng-special-wm"><img src="BIGSPESIAL.jpg" alt="Bihun Goreng Special WM" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bihun Goreng Special WM</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+            </div>
+            
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Kwetiaw</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <!-- Data dari PDF -->
+                <div class="menu-item-card" id="menu-item-kwetiaw-goreng-telur"><img src="KWGTELUR.jpg" alt="Kwetiaw Goreng Telur" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Goreng Telur</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-goreng-ati-ampela"><img src="KWGATIM.jpg" alt="Kwetiaw Goreng Ati Ampela" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Goreng Ati Ampela</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-goreng-ayam"><img src="KWGYM.jpg" alt="Kwetiaw Goreng Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Goreng Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-goreng-seafood"><img src="KWGSFD.jpg" alt="Kwetiaw Goreng Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Goreng Seafood</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-goreng-sapi"><img src="KWGSAPI.jpg" alt="Kwetiaw Goreng Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Goreng Sapi</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-goreng-gila"><img src="KWGILA.jpg" alt="Kwetiaw Goreng Gila" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Goreng Gila</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-goreng-special-wm"><img src="KWGSPESIAL.jpg" alt="Kwetiaw Goreng Special WM" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Goreng Special WM</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-siram-ayam"><img src="KWSYAM.jpg" alt="Kwetiaw Siram Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Siram Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-siram-seafood"><img src="KWSSFD.jpg" alt="Kwetiaw Siram Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Siram Seafood</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-siram-sapi"><img src="KWSSAPI.jpg" alt="Kwetiaw Siram Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Siram Sapi</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-kuah-ayam"><img src="KWHYAM.jpg" alt="Kwetiaw Kuah Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Kuah Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-kuah-seafood"><img src="KWHSFD.jpg" alt="Kwetiaw Kuah Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Kuah Seafood</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kwetiaw-kuah-sapi"><img src="KWHSAPI.jpg" alt="Kwetiaw Kuah Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Kuah Sapi</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Sayuran & Sup</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <!-- Data dari PDF -->
+                <div class="menu-item-card" id="menu-item-tomyam-ayam"><img src="tomyam-ayam.png" alt="Tomyam Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tomyam Ayam</h3><span class="text-2xl font-semibold text-yellow-400">43K</span></div></div>
+                <div class="menu-item-card" id="menu-item-tomyam-seafood"><img src="tomyam-sfd.png" alt="Tomyam Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tomyam Seafood</h3><span class="text-2xl font-semibold text-yellow-400">45K</span></div></div>
+                <div class="menu-item-card" id="menu-item-tomyam-sapi"><img src="tomyam-sapi.png" alt="Tomyam Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tomyam Sapi</h3><span class="text-2xl font-semibold text-yellow-400">50K</span></div></div>
+                <div class="menu-item-card" id="menu-item-capcay-ayam"><img src="capcayayam.png" alt="Capcay Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Capcay Ayam</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-capcay-seafood"><img src="capcaysfd.png" alt="Capcay Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Capcay Seafood</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-capcay-sapi"><img src="capcaysapi.png" alt="Capcay Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Capcay Sapi</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-capcay-special-wm"><img src="capcayspesial.png" alt="Capcay Special WM" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Capcay Special WM</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sapo-tahu-ayam"><img src="sapoayam.png" alt="Sapo Tahu Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sapo Tahu Ayam</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sapo-tahu-seafood"><img src="saposfd.png" alt="Sapo Tahu Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sapo Tahu Seafood</h3><span class="text-2xl font-semibold text-yellow-400">45K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sapo-tahu-sapi"><img src="saposapi.png" alt="Sapo Tahu Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sapo Tahu Sapi</h3><span class="text-2xl font-semibold text-yellow-400">47K</span></div></div>
+                <div class="menu-item-card" id="menu-item-tongseng-ayam"><img src="tongayam.jpeg" alt="Tongseng Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tongseng Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-tongseng-sapi"><img src="tongsapi.jpg" alt="Tongseng Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tongseng Sapi</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-soto-madura"><img src="soto-madura.jpg" alt="Soto Madura" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Soto Madura</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-soto-betawi"><img src="soto-betawi.jpeg" alt="Soto Betawi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Soto Betawi</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sop-ayam"><img src="sopayam.jpeg" alt="Sop Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sop Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sop-daging"><img src="sopdaging.png" alt="Sop Daging" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sop Daging</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sop-iga-sapi"><img src="sopiga.png" alt="Sop Iga Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sop Iga Sapi</h3><span class="text-2xl font-semibold text-yellow-400">65K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sop-buntut"><img src="sopbuntut.png" alt="Sop Buntut" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sop Buntut</h3><span class="text-2xl font-semibold text-yellow-400">70K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-yellow-400 border-gray-700 pb-2 mb-6">Special The Grill</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <!-- Data dari PDF -->
+                <div class="menu-item-card" id="menu-item-iga-goreng-penyet"><img src="igagrg.jpg" alt="Iga Goreng Penyet" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Iga Goreng Penyet</h3><span class="text-2xl font-semibold text-yellow-400">55K</span></div></div>
+                <div class="menu-item-card" id="menu-item-iga-bakar"><img src="igabakr.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Iga Bakar</h3><span class="text-2xl font-semibold text-yellow-400">55K</span></div></div>
+                <div class="menu-item-card" id="menu-item-iga-bakar-mozarela"><img src="igamoza.png" alt="Iga Bakar Mozarela" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Iga Bakar Mozarela</h3><span class="text-2xl font-semibold text-yellow-400">60K</span></div></div>
+                <div class="menu-item-card" id="menu-item-buntut-bakar"><img src="buntutbkr.png" alt="Buntut Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Buntut Bakar</h3><span class="text-2xl font-semibold text-yellow-400">65K</span></div></div>
+                <div class="menu-item-card" id="menu-item-buntut-bakar-double"><img src="buntutdbl.png" alt="Buntut Bakar Double" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Buntut Bakar Double</h3><span class="text-2xl font-semibold text-yellow-400">70K</span></div></div>
+                <div class="menu-item-card" id="menu-item-paket-hokie"><img src="hokie1.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Paket Hokie 1</h3><span class="text-2xl font-semibold text-yellow-400">65K</span></div></div>
+                <div class="menu-item-card" id="menu-item-paket-hokie"><img src="hokie2.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Paket Hokie 2</h3><span class="text-2xl font-semibold text-yellow-400">70K</span></div></div>
+                <div class="menu-item-card" id="menu-item-paket-hokie"><img src="hokiemix.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Paket Hokie MIX</h3><span class="text-2xl font-semibold text-yellow-400">90K</span></div></div>
+                <div class="menu-item-card" id="menu-item-paket-hokie"><img src="hokiesfd.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Paket Hokie SEAFOOD</h3><span class="text-2xl font-semibold text-yellow-400">69K</span></div></div>
+                <div class="menu-item-card" id="menu-item-paket-steam"><img src="steambotbeef.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Steamboat Beef</h3><span class="text-2xl font-semibold text-yellow-400">69K</span></div></div>
+                <div class="menu-item-card" id="menu-item-paket-steam"><img src="steambotchic.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Steamboat Chicken</h3><span class="text-2xl font-semibold text-yellow-400">55K</span></div></div>
+                <div class="menu-item-card" id="menu-item-paket-steam"><img src="steambotmix.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Steamboat MIX</h3><span class="text-2xl font-semibold text-yellow-400">90K</span></div></div>
+                <div class="menu-item-card" id="menu-item-paket-steam"><img src="steambotsfd.png" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Steamboat Seafood</h3><span class="text-2xl font-semibold text-yellow-400">80K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Menu Nusantara</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <!-- Data dari PDF -->
+                <div class="menu-item-card" id="menu-item-ayam-goreng"><img src="ayamgrg.jpg" alt="Ayam Goreng" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Goreng</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-bakar"><img src="ayambkr.png" alt="Ayam Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Bakar</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-geprek"><img src="ayamgprk.png" alt="Ayam Geprek" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Geprek</h3><span class="text-2xl font-semibold text-yellow-400">23K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-rica-rica"><img src="ayamrica.jpeg" alt="Ayam Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-asam-manis"><img src="ayamasam.png" alt="Ayam Asam Manis" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Asam Manis</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-lada-hitam"><img src="ayamlh.png" alt="Ayam Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-kampung-gepuk"><img src="ayamkampgepuk.jpg" alt="Ayam Kampung Gepuk" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Kampung Gepuk</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-kampung-kremes"><img src="ayamkampkreme.png" alt="Ayam Kampung Kremes" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Kampung Kremes</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-kampung-bakar"><img src="ayamkampbakr.png" alt="Ayam Kampung Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Kampung Bakar</h3><span class="text-2xl font-semibold text-yellow-400">45K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-kampung-bakar-lada-hitam"><img src="ayamkampbkrlada.png" alt="Ayam Kampung Bakar Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Kampung Bakar Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">50K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-kampung-rica-rica"><img src="ayamkamprica.png" alt="Ayam Kampung Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Kampung Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">50K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ayam-kampung-lada-hitam"><img src="ayamkamplada.png" alt="Ayam Kampung Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ayam Kampung Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">45K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bebek-goreng"><img src="bebekgrg.jpg" alt="Bebek Goreng" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bebek Goreng</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bebek-bakar"><img src="bebekbkr.png" alt="Bebek Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bebek Bakar</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bebek-rica-rica"><img src="bebekrica.png" alt="Bebek Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bebek Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bebek-lada-hitam"><img src="bebeklda.png" alt="Bebek Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bebek Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bebek-kremes"><img src="bebekkrems.png" alt="Bebek Kremes" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bebek Kremes</h3><span class="text-2xl font-semibold text-yellow-400">45K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bebek-bakar-lada-hitam"><img src="bebekbkrlda.png" alt="Bebek bakar Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bebek bakar Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">45K</span></div></div>
+                <div class="menu-item-card" id="menu-item-bebek-sambel-gledek"><img src="bebekgledek.png" alt="Bebek Sambel Gledek" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Bebek Sambel Gledek</h3><span class="text-2xl font-semibold text-yellow-400">50K</span></div></div>
+                <div class="menu-item-card" id="menu-item-udang-rica-rica"><img src="udangrica.png" alt="Udang Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Udang Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-udang-asam-manis"><img src="udangasam.png" alt="Udang Asam Manis" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Udang Asam Manis</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-udang-lada-hitam"><img src="udanglh.png" alt="Udang Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Udang Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-udang-telur-asin"><img src="udangtasin.png" alt="Udang Telur Asin" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Udang Telur Asin</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-udang-sambel-pete"><img src="udangpet.png" alt="Udang Sambel Pete" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Udang Sambel Pete</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-cumi-rica-rica"><img src="cumirica.png" alt="Cumi Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cumi Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-cumi-asam-manis"><img src="cumiasammanis.png" alt="Cumi Asam Manis" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cumi Asam Manis</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-cumi-lada-hitam"><img src="cumilada.png" alt="Cumi Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cumi Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-cumi-telur-asin"><img src="cumitasin.png" alt="Cumi Telur Asin" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cumi Telur Asin</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-cumi-sambel-pete"><img src="cumipete.png" alt="Cumi Sambel Pete" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cumi Sambel Pete</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kikil-penyet"><img src="kikilpenyet.png" alt="Kikil Penyet" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kikil Penyet</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-oseng-kikil"><img src="osengkikil.png" alt="Oseng Kikil" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Oseng Kikil</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kikil-sambel-pete"><img src="kikilpete.png" alt="Kikil Sambel Pete" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kikil Sambel Pete</h3><span class="text-2xl font-semibold text-yellow-400">27K</span></div></div>
+                <div class="menu-item-card" id="menu-item-oseng-daging"><img src="osengdaging.png" alt="Oseng Daging" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Oseng Daging</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-oseng-iga"><img src="osengiga.png" alt="Oseng Iga" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Oseng Iga</h3><span class="text-2xl font-semibold text-yellow-400">55K</span></div></div>
+                <div class="menu-item-card" id="menu-item-telur-barendo"><img src="telurbaren.jpeg" alt="Telur Barendo" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Telur Barendo</h3><span class="text-2xl font-semibold text-yellow-400">15K</span></div></div>
+                <div class="menu-item-card" id="menu-item-terong-penyet"><img src="terongpenyet.jpg" alt="Terong Penyet" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Terong Penyet</h3><span class="text-2xl font-semibold text-yellow-400">15K</span></div></div>
+                <div class="menu-item-card" id="menu-item-terong-crispy"><img src="terongkirsp.png" alt="Terong Crispy" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Terong Crispy</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+            </div>
+            
+        </section>
+        <!-- == END HALAMAN MENU LOKALAN == -->
+
+
+        <!-- == HALAMAN FAST FOOD (Template) == -->
+        <section id="page-fast-food" class="menu-page container mx-auto px-4 py-8">
+            <a href="#page-utama" class="page-link inline-flex items-center gap-2 text-gray-300 hover:text-white transition mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Kembali ke Halaman Utama
+            </a>
+            <h1 class="text-4xl md:text-5xl font-black uppercase mb-12 text-center">Fast Food & Milenial</h1>
+            
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Rice Bowl</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <!-- Isi dengan 15 item menu fast food, contoh: -->
+                <div class="menu-item-card" id="menu-item-rice-bowl-ayam-rica-rica"><img src="rbayamrica.jpeg" alt="Rice Bowl Ayam Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Rice Bowl Ayam Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-rice-bowl-ayam-lada-hitam"><img src="rbayamlada.png" alt="Rice Bowl Ayam Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Rice Bowl Ayam Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-rice-bowl-udang-rica-rica"><img src="rbudangrica.png" alt="Rice Bowl Udang Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Rice Bowl Udang Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-rice-bowl-udang-lada-hitam"><img src="rbudanglada.png" alt="Rice Bowl Udang Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Rice Bowl Udang Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-rice-bowl-cumi-rica-rica"><img src="rbcumirica.png" alt="Rice Bowl Cumi Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Rice Bowl Cumi Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-rice-bowl-cumi-lada-hitam"><img src="rbcumilada.png" alt="Rice Bowl Cumi Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Rice Bowl Cumi Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-rice-bowl-sapi-rica-rica"><img src="rbsapirica.png" alt="Rice Bowl Sapi Rica - Rica" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Rice Bowl Sapi Rica - Rica</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-rice-bowl-sapi-lada-hitam"><img src="rbsapilada.png" alt="Rice Bowl Sapi Lada Hitam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Rice Bowl Sapi Lada Hitam</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Hot Plate</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-hot-plate-ayam"><img src="hotplayam.jpeg" alt="Hot Plate Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Hot Plate Ayam</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-hot-plate-udang"><img src="hotplaudang.png" alt="Hot Plate Udang" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Hot Plate Udang</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-hot-plate-cumi"><img src="hotplacumi.png" alt="Hot Plate Cumi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Hot Plate Cumi</h3><span class="text-2xl font-semibold text-yellow-400">38K</span></div></div>
+                <div class="menu-item-card" id="menu-item-hot-plate-sapi"><img src="hotplasapi.png" alt="Hot Plate Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Hot Plate Sapi</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Steak</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-chicken-steak"><img src="ayamsteak.png" alt="Chicken Steak" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Chicken Steak</h3><span class="text-2xl font-semibold text-yellow-400">40K</span></div></div>
+                <div class="menu-item-card" id="menu-item-crispy-chicken-steak"><img src="chichkensteak.jpeg" alt="Crispy Chicken Steak" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Crispy Chicken Steak</h3><span class="text-2xl font-semibold text-yellow-400">45K</span></div></div>
+                <div class="menu-item-card" id="menu-item-beef-steak"><img src="beefsteak.png" alt="Beef Steak" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Beef Steak</h3><span class="text-2xl font-semibold text-yellow-400">60K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Mie Ramen</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-ramen-ayam"><img src="ramenayam.jpeg" alt="Ramen Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ramen Ayam</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ramen-ati-ampela"><img src="ramenati.png" alt="Ramen Ati Ampela" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ramen Ati Ampela</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ramen-seafood"><img src="ramensfd.png" alt="Ramen Seafood" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ramen Seafood</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ramen-sapi"><img src="ramensapi.png" alt="Ramen Sapi" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ramen Sapi</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-ramen-spesial-wm"><img src="ramenspesial.png" alt="Ramen Spesial WM" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Ramen Spesial WM</h3><span class="text-2xl font-semibold text-yellow-400">37K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Pizza & Burger</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-pizza-bolognese"><img src="pizzabolog.jpg" alt="Pizza Bolognese" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pizza Bolognese</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pizza-meatlover"><img src="pizzameat.png" alt="Pizza Meatlover" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pizza Meatlover</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
+                <div class="menu-item-card" id="menu-item-burger-chicken"><img src="burger chicken.png" alt="Burger Chicken" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Burger Chicken</h3><span class="text-2xl font-semibold text-yellow-400">27K</span></div></div>
+                <div class="menu-item-card" id="menu-item-burger-beef"><img src="burgerbeef.jpg" alt="Burger Beef" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Burger Beef</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Pasta</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-spagheti-carbonara"><img src="spageticarbo.jpeg" alt="Spagheti Carbonara" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Spagheti Carbonara</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-spagheti-bolognese"><img src="spagetibolog.png" alt="Spagheti Bolognese" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Spagheti Bolognese</h3><span class="text-2xl font-semibold text-yellow-400">30K</span></div></div>
+            </div>
+        </section>
+    
+        <section id="page-cemilan" class="menu-page container mx-auto px-4 py-8">
+            <a href="#page-utama" class="page-link inline-flex items-center gap-2 text-gray-300 hover:text-white transition mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Kembali ke Halaman Utama
+            </a>
+            <h1 class="text-4xl md:text-5xl font-black uppercase mb-12 text-center">Cemilan (Makanan Ringan)</h1>
+            
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Snack Milenial</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-cireng"><img src="cireng.png" alt="Cireng" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cireng</h3><span class="text-2xl font-semibold text-yellow-400">18K</span></div></div>
+                <div class="menu-item-card" id="menu-item-tempe-mendoan"><img src="mendoan.jpg" alt="Tempe Mendoan" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tempe Mendoan</h3><span class="text-2xl font-semibold text-yellow-400">18K</span></div></div>
+                <div class="menu-item-card" id="menu-item-martabak-tahu-telur"><img src="martabaktahu.png" alt="Martabak Tahu Telur" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Martabak Tahu Telur</h3><span class="text-2xl font-semibold text-yellow-400">18K</span></div></div>
+                <div class="menu-item-card" id="menu-item-tahu-jerit"><img src="tahujer.png" alt="Tahu Jerit" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tahu Jerit</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-tahu-bakso-goreng"><img src="tahubakso.jpeg" alt="Tahu Bakso Goreng" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tahu Bakso Goreng</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-tahu-bakso-rebus"><img src="tahubaksoreb.jpg" alt="Tahu Bakso Rebus" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tahu Bakso Rebus</h3><span class="text-2xl font-semibold text-yellow-400">22K</span></div></div>
+                <div class="menu-item-card" id="menu-item-potato-cheese-ball"><img src="potato.jpg" alt="Potato Cheese Ball" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Potato Cheese Ball</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Gorengan</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-kentang-goreng-balado"><img src="kentangbalado.jpg" alt="Kentang Goreng Balado" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kentang Goreng Balado</h3><span class="text-2xl font-semibold text-yellow-400">23K</span></div></div>
+                <div class="menu-item-card" id="menu-item-kentang-goreng-original"><img src="kentang.jpg" alt="Kentang Goreng Original" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kentang Goreng Original</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-singkong-goreng-balado"><img src="singkongbalad.jpeg" alt="Singkong Goreng Balado" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Singkong Goreng Balado</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-singkong-goreng-original"><img src="singkongori.png" alt="Singkong Goreng Original" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Singkong Goreng Original</h3><span class="text-2xl font-semibold text-yellow-400">18K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sosis-goreng"><img src="sosisgrg.png" alt="Sosis Goreng" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sosis Goreng</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-sosis-bakar"><img src="sosisbkr.png" alt="Sosis Bakar" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sosis Bakar</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-lumpia-ayam"><img src="lumpiaayam.jpg" alt="Lumpia Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Lumpia Ayam</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-lumpia-tapai"><img src="lumpiatape.jpeg" alt="Lumpia Tapai" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Lumpia Tapai</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+            </div>
+
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Indomie & Roti/Pisang</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-indomie-goreng-rebus-telur"><img src="indomietelur.jpeg" alt="Indomie Goreng / Rebus Telur" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Indomie Goreng / Rebus Telur</h3><span class="text-2xl font-semibold text-yellow-400">18K</span></div></div>
+                <div class="menu-item-card" id="menu-item-indomie-goreng-rebus-ayam"><img src="indomietelur.jpeg" alt="Indomie Goreng / Rebus Ayam" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Indomie Goreng / Rebus Ayam</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-indomie-goreng-rebus-ati-ampela"><img src="indomietelur.jpeg" alt="Indomie Goreng / Rebus Ati Ampela" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Indomie Goreng / Rebus Ati Ampela</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-indomie-goreng-rebus-special-wm"><img src="indomiespesial.png" alt="Indomie Goreng / Rebus Special WM" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Indomie Goreng / Rebus Special WM</h3><span class="text-2xl font-semibold text-yellow-400">28K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pisang-goreng-original"><img src="pisanggrg.jpeg" alt="Pisang Goreng Original" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pisang Goreng Original</h3><span class="text-2xl font-semibold text-yellow-400">18K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pisang-goreng-keju"><img src="pisangkeju.png" alt="Pisang Goreng Keju" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pisang Goreng Keju</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pisang-goreng-coklat"><img src="pisangcoklat.png" alt="Pisang Goreng Coklat" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pisang Goreng Coklat</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pisang-goreng-coklat-keju"><img src="pisangcoklatkeju.jpg" alt="Pisang Goreng Coklat Keju" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pisang Goreng Coklat Keju</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pisang-bakar-original"><img src="pisbak.jpg" alt="Pisang Bakar Original" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pisang Bakar Original</h3><span class="text-2xl font-semibold text-yellow-400">18K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pisang-bakar-keju"><img src="pisbakkeju.png" alt="Pisang Bakar Keju" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pisang Bakar Keju</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pisang-bakar-coklat"><img src="pisbakcoklat.png" alt="Pisang Bakar Coklat" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pisang Bakar Coklat</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-pisang-bakar-coklat-keju"><img src="pisbakcokju.png" alt="Pisang Bakar Coklat Keju" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Pisang Bakar Coklat Keju</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-roti-bakar-keju"><img src="rotibakarkeju.png" alt="Roti Bakar Keju" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Roti Bakar Keju</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-roti-bakar-coklat"><img src="rotibakarcoklt.png" alt="Roti Bakar Coklat" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Roti Bakar Coklat</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+                <div class="menu-item-card" id="menu-item-roti-bakar-coklat-keju"><img src="rotibakarcokkeju.jpg" alt="Roti Bakar Coklat keju" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Roti Bakar Coklat keju</h3><span class="text-2xl font-semibold text-yellow-400">22K</span></div></div>
+            </div>
+        </section>
+        <!-- == HALAMAN MINUMAN (BARU) == -->
+        <section id="page-minuman" class="menu-page container mx-auto px-4 py-8">
+            <a href="#page-utama" class="page-link inline-flex items-center gap-2 text-gray-300 hover:text-white transition mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Kembali ke Halaman Utama
+            </a>
+            <h1 class="text-4xl md:text-5xl font-black uppercase mb-12 text-center">Menu Minuman & Bar</h1>
+            
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Authentic Menu</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-es-campur"><img src="escampur.jpeg" alt="Es Campur" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Es Campur</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-alpukat-kocok"><img src="alpukatkocok.png" alt="Alpukat Kocok" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Alpukat Kocok</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-es-dawet"><img src="esdawet.jpeg" alt="Es Dawet" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Es Dawet</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-es-teler"><img src="esteler.jpg" alt="Es Teler" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Es Teler</h3><span class="text-2xl font-semibold text-yellow-400">25K</span></div></div>
+                <div class="menu-item-card" id="menu-item-degan-jeruk"><img src="esdeganjeruk.jpeg" alt="Degan Jeruk" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Degan Jeruk</h3><span class="text-2xl font-semibold text-yellow-400">23K</span></div></div>
+                <div class="menu-item-card" id="menu-item-degan-susu"><img src="esdegansusu.jpg" alt="Degan susu" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Degan Susu</h3><span class="text-2xl font-semibold text-yellow-400">23K</span></div></div>
+                <div class="menu-item-card" id="menu-item-degan-susu"><img src="esdegan.jpg" alt="Degan susu" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Degan Original</h3><span class="text-2xl font-semibold text-yellow-400">20K</span></div></div>
+            </div>
+                <!-- Sisa placeholder -->
+            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Coffee</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-americano"><img src="americano.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Americano</h3><span class="text-2xl font-semibold text-yellow-400">HOT [15K]<h2></h2>ICE [16K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-long-black"><img src="longblack.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Long Black</h3><span class="text-2xl font-semibold text-yellow-400">HOT [14K]<h2></h2>ICE [16K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-latte-classic"><img src="latteclass.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Latte Classic</h3><span class="text-2xl font-semibold text-yellow-400">HOT [22K]<h2></h2>ICE [24K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-vanilla-latte"><img src="vanilalatte.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Vanilla Latte</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-caramel-latte"><img src="caramellatte.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Caramel Latte</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-hazelnut-latte"><img src="hazelnutlatte.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Hazelnut Latte</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-capuchino"><img src="capucino.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cappucino</h3><span class="text-2xl font-semibold text-yellow-400">HOT [22K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-avocado-coffe"><img src="avocadocofe.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Avocado Coffee</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [28K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-affogato"><img src="affogato.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Affogato</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [22K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-caramel-machiato"><img src="caramelmachiato.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Caramel Machiato</h3><span class="text-2xl font-semibold text-yellow-400">HOT [26K]<h2></h2>ICE [28K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-kopi-susu-butter"><img src="kopisusubuter.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kopi Susu Butter</h3><span class="text-2xl font-semibold text-yellow-400">HOT [20K]<h2></h2>ONLY HOT</span></div></div>
+            </div>
+             <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Signature Drink</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-kopi-susu-milenial"><img src="kopisusumilenial.jpeg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kopi Susu Milenial</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [20K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-kopi-susu-aren"><img src="kopisusuaren.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kopi Susu Aren</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [23K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-choco-butter"><img src="choco butter.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Choco Butter</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [26K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-milenial-salty"><img src="salty.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Milenial Salty</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [28K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-moca-mint-choco"><img src="mocamint.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Moca Mint Choco</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [26K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-tiramisu"><img src="tiramisu.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tiramisu</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [26K]</span></div></div>
+             </div>
+             <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Tea Series&Non Coffe & Mocktail</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-teh-manis"><img src="estehmanis.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Teh Manis</h3><span class="text-2xl font-semibold text-yellow-400">HOT [13K]<h2></h2>ICE [15K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-teh-tawar"><img src="estehtawar.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Teh Tawar</h3><span class="text-2xl font-semibold text-yellow-400">HOT [10K]<h2></h2>ICE [13K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-teh-tarik"><img src="tehtarik.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Teh Tarik</h3><span class="text-2xl font-semibold text-yellow-400">HOT [20K]<h2></h2>ICE [23K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-lecy-tea"><img src="lecytea.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Lecy Tea</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-longan-tea"><img src="longantea.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Longan Tea</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-lemon-tea"><img src="lemontea.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Lemon Tea</h3><span class="text-2xl font-semibold text-yellow-400">HOT [20K]<h2></h2>ICE [23K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-peach-tea"><img src="peachtea.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Peach Tea</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-strawbery-tea"><img src="strawberrytea.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Strawberry Tea</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-manggo-tea"><img src="mangotea.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Manggo Tea</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-honey-lemon"><img src="honeylemon.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Honey Lemon</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-matcha"><img src="matcha.jpeg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Matcha</h3><span class="text-2xl font-semibold text-yellow-400">HOT [22K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-milo"><img src="milo.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Milo</h3><span class="text-2xl font-semibold text-yellow-400">HOT [22K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-taro"><img src="taro.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Taro</h3><span class="text-2xl font-semibold text-yellow-400">HOT [22K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-redvelvet"><img src="redvelvet.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Redvelvet</h3><span class="text-2xl font-semibold text-yellow-400">HOT [22K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-cincau-gula-aren"><img src="cincaugulaaren.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cincau Gula Aren</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-dark-chocolate"><img src="darkchoco.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Dark Chocolate</h3><span class="text-2xl font-semibold text-yellow-400">HOT [20K]<h2></h2>ICE 23K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-caramel-chocolate"><img src="caramelchoco.jpeg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Caramel Chocolate</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-vanila-chocolate"><img src="vanillachoco.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Vanilla Chocolate</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-hazelnut-chocolate "><img src="hazelnutchoco.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Hazelnut Chocolate</h3><span class="text-2xl font-semibold text-yellow-400">HOT [23K]<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-pinoro"><img src="mocktailpinoro.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mocktail Pinoro</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-minuman-placeholder-9"><img src="mocktailjungk.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mocktail Jungkong</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-minuman-placeholder-9"><img src="mocktailkasturi.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mocktail Kasturi</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-minuman-placeholder-9"><img src="mocktailpeabery.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Mocktail Peaberry</h3><span class="text-2xl font-semibold text-yellow-400">ONLY ICE<h2></h2>ICE [25K]</span></div></div>
+            </div>
+             <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Frappe & Float</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-matcha-frappe"><img src="matchafrappe.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Matcha Frappe</h3><span class="text-2xl font-semibold text-yellow-400">[35K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-coklat-frappe"><img src="chocolatefrappe.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Chocolate Frappe</h3><span class="text-2xl font-semibold text-yellow-400">[35K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-vanila-frappe"><img src="vanillafrappe.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Vanilla Frappe</h3><span class="text-2xl font-semibold text-yellow-400">[35K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-cokkkies-frape"><img src="cookiesfrappe.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cookies Frappe</h3><span class="text-2xl font-semibold text-yellow-400">[38K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-moca-float"><img src="mocafloat.jpeg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Moca Float</h3><span class="text-2xl font-semibold text-yellow-400">[28K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-strawbery-float"><img src="strawberryfloat.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Strawberry Float</h3><span class="text-2xl font-semibold text-yellow-400">[28K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-milo-delight"><img src="milodelight.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Milo Delight</h3><span class="text-2xl font-semibold text-yellow-400">[28K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-banana-cream-float"><img src="bananacreamfloat.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Banana Cream Float</h3><span class="text-2xl font-semibold text-yellow-400">[30K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-cake-cream"><img src="cake&cream.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Cake&Cream</h3><span class="text-2xl font-semibold text-yellow-400">[35K]</span></div></div>
+            </div>
+             <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Kidz Series</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-strawkid"><img src="strawberryfrizz.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Strawberry Frizz</h3><span class="text-2xl font-semibold text-yellow-400">[23K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-mangkid"><img src="mangolesi.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Manggo Lessi </h3><span class="text-2xl font-semibold text-yellow-400">[23K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-whitekid"><img src="whitelecy.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">White Lecy</h3><span class="text-2xl font-semibold text-yellow-400">[23K]</span></div></div>
+            </div>
+             <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Healthy Drnk -Juice & Traditional Drink</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="menu-item-card" id="menu-item-jeruk-manis"><img src="jerukmanis.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Jeruk Manis</h3><span class="text-2xl font-semibold text-yellow-400">HOT [15K]<h2></h2>ICE [20K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-jeruk-kunci"><img src="jerukkunci.jpeg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Jeruk Kunci</h3><span class="text-2xl font-semibold text-yellow-400">HOT [15K]<h2></h2>ICE [20K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-jeruk-kunci-sunmoy"><img src="jerukkuncisunmoy.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Jeruk Kunci Sunmoy</h3><span class="text-2xl font-semibold text-yellow-400">HOT [18K]<h2></h2>ICE [23K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-jus-alpukat"><img src="JusAlpukat.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Jus Alpukat</h3><span class="text-2xl font-semibold text-yellow-400">[25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-jus-mangga"><img src="jusmangga.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Jus Mangga</h3><span class="text-2xl font-semibold text-yellow-400">[25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-jus-naga"><img src="jusnaga.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Jus Naga</h3><span class="text-2xl font-semibold text-yellow-400">[25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-jus-melon"><img src="jusmelon.jpeg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Jus Melon</h3><span class="text-2xl font-semibold text-yellow-400">25K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-jeruk-kunci-longan"><img src="jerukkuncilongan.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Jeruk Kunci Longan</h3><span class="text-2xl font-semibold text-yellow-400">HOT [20K]<h2></h2>ICE [23K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-wedang-jahe"><img src="wedangjahe.jpg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Wedang Jahe</h3><span class="text-2xl font-semibold text-yellow-400">[20K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-minuman-placeholder-9"><img src="wedanguwuh.png" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Wedang Uwuh</h3><span class="text-2xl font-semibold text-yellow-400">[20K]</span></div></div>
+                <div class="menu-item-card" id="menu-item-artisan-tea"><img src="artisantea.jpeg" alt="Minuman" class="w-full h-64 object-cover rounded-lg mb-4"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Artisan Tea(Ask to service)</h3><span class="text-2xl font-semibold text-yellow-400">[25K]</span></div></div>
+                
+            </div>
+            
+        </section>
+        <!-- == END HALAMAN MINUMAN == -->
+
+
+        <!-- == HALAMAN TAMBAHAN (Template) == -->
+        <section id="page-tambahan" class="menu-page container mx-auto px-4 py-8">
+            <a href="#page-utama" class="page-link inline-flex items-center gap-2 text-gray-300 hover:text-white transition mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Kembali ke Halaman Utama
+            </a>
+            <h1 class="text-4xl md:text-5xl font-black uppercase mb-12 text-center">Menu Tambahan</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                <!-- Isi dengan item tambahan, contoh: -->
+                <div class="menu-item-card" id="menu-item-nasi-putih">
+                    <img src="nasiputih.jpeg" alt="Nasi Putih" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold animated-underline">Nasi Putih</h3>
+                        <span class="text-2xl font-semibold text-yellow-400">5K</span>
+                    </div>
+                </div>
+                <div class="menu-item-card" id="menu-item-sambal-geprek">
+                    <img src="sambaldadak.jpg" alt="Sambal" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold animated-underline">Sambal Dadak</h3>
+                        <span class="text-2xl font-semibold text-yellow-400">5K</span>
+                    </div>
+                </div>
+                 <div class="menu-item-card" id="menu-item-sambal-geprek">
+                    <img src="sambalhijau.jpeg" alt="Sambal" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold animated-underline">Sambal Ijo</h3>
+                        <span class="text-2xl font-semibold text-yellow-400">5K</span>
+                    </div>
+                </div>
+                 <div class="menu-item-card" id="menu-item-sambal-geprek">
+                    <img src="sambalmatah.jpg" alt="Sambal" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold animated-underline">Sambal Matah</h3>
+                        <span class="text-2xl font-semibold text-yellow-400">5K</span>
+                    </div>
+                </div>
+                 <div class="menu-item-card" id="menu-item-telur-dadar">
+                    <img src="kerupuk.png" alt="Telur" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold animated-underline">Kerupuk</h3>
+                        <span class="text-2xl font-semibold text-yellow-400">3K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- == END HALAMAN TAMBAHAN == -->
+
+    </main>
+    <!-- == END Wadah "halaman" == -->
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const pageLinks = document.querySelectorAll('.page-link');
+            const menuPages = document.querySelectorAll('.menu-page');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const searchContainer = document.getElementById('search-container');
+            
+            // --- DATABASE SEARCH BAR ---
+            // Ini adalah "otak" dari search bar Anda.
+            // Kata kunci (key) akan dicocokkan dengan pencarian.
+            // 'id' adalah id elemen item, 'page' adalah id halaman tempat item itu berada.
+            const searchMap = {
+                // Menu Lokalan - Nasi Goreng
+                "nasi goreng telur": { id: "menu-item-nasi-goreng-telur", page: "#page-menu-lokalan" },
+                "nasi goreng sosis": { id: "menu-item-nasi-goreng-sosis", page: "#page-menu-lokalan" },
+                "nasi goreng pete": { id: "menu-item-nasi-goreng-pete", page: "#page-menu-lokalan" },
+                "nasi goreng bakso": { id: "menu-item-nasi-goreng-bakso", page: "#page-menu-lokalan" },
+                "nasi goreng ati ampela": { id: "menu-item-nasi-goreng-ati-ampela", page: "#page-menu-lokalan" },
+                "nasi goreng ayam": { id: "menu-item-nasi-goreng-ayam", page: "#page-menu-lokalan" },
+                "nasi goreng ikan asin": { id: "menu-item-nasi-goreng-ikan-asin", page: "#page-menu-lokalan" },
+                "nasi goreng seafood": { id: "menu-item-nasi-goreng-seafood", page: "#page-menu-lokalan" },
+                "nasi goreng hongkong": { id: "menu-item-nasi-goreng-hongkong", page: "#page-menu-lokalan" },
+                "nasi goreng gila": { id: "menu-item-nasi-goreng-gila", page: "#page-menu-lokalan" },
+                "nasi goreng special wm": { id: "menu-item-nasi-goreng-special-wm", page: "#page-menu-lokalan" },
+                // Menu Lokalan - Mie & Bihun
+                "mie goreng telur": { id: "menu-item-mie-goreng-telur", page: "#page-menu-lokalan" },
+                "mie goreng pete": { id: "menu-item-mie-goreng-pete", page: "#page-menu-lokalan" },
+                "mie goreng ati ampela": { id: "menu-item-mie-goreng-ati-ampela", page: "#page-menu-lokalan" },
+                "mie goreng ayam": { id: "menu-item-mie-goreng-ayam", page: "#page-menu-lokalan" },
+                "mie goreng seafood": { id: "menu-item-mie-goreng-seafood", page: "#page-menu-lokalan" },
+                "mie goreng sapi": { id: "menu-item-mie-goreng-sapi", page: "#page-menu-lokalan" },
+                "mie goreng gila": { id: "menu-item-mie-goreng-gila", page: "#page-menu-lokalan" },
+                "mie goreng special wm": { id: "menu-item-mie-goreng-special-wm", page: "#page-menu-lokalan" },
+                "bihun goreng telur": { id: "menu-item-bihun-goreng-telur", page: "#page-menu-lokalan" },
+                "bihun goreng pete": { id: "menu-item-bihun-goreng-pete", page: "#page-menu-lokalan" },
+                "bihun goreng ati ampela": { id: "menu-item-bihun-goreng-ati-ampela", page: "#page-menu-lokalan" },
+                "bihun goreng ayam": { id: "menu-item-bihun-goreng-ayam", page: "#page-menu-lokalan" },
+                "bihun goreng seafood": { id: "menu-item-bihun-goreng-seafood", page: "#page-menu-lokalan" },
+                "bihun goreng sapi": { id: "menu-item-bihun-goreng-sapi", page: "#page-menu-lokalan" },
+                "bihun goreng gila": { id: "menu-item-bihun-goreng-gila", page: "#page-menu-lokalan" },
+                "bihun goreng special wm": { id: "menu-item-bihun-goreng-special-wm", page: "#page-menu-lokalan" },
+                // Menu Lokalan - Kwetiaw
+                "kwetiaw goreng telur": { id: "menu-item-kwetiaw-goreng-telur", page: "#page-menu-lokalan" },
+                "kwetiaw goreng ati ampela": { id: "menu-item-kwetiaw-goreng-ati-ampela", page: "#page-menu-lokalan" },
+                "kwetiaw goreng ayam": { id: "menu-item-kwetiaw-goreng-ayam", page: "#page-menu-lokalan" },
+                "kwetiaw goreng seafood": { id: "menu-item-kwetiaw-goreng-seafood", page: "#page-menu-lokalan" },
+                "kwetiaw goreng sapi": { id: "menu-item-kwetiaw-goreng-sapi", page: "#page-menu-lokalan" },
+                "kwetiaw goreng gila": { id: "menu-item-kwetiaw-goreng-gila", page: "#page-menu-lokalan" },
+                "kwetiaw goreng special wm": { id: "menu-item-kwetiaw-goreng-special-wm", page: "#page-menu-lokalan" },
+                "kwetiaw siram ayam": { id: "menu-item-kwetiaw-siram-ayam", page: "#page-menu-lokalan" },
+                "kwetiaw siram seafood": { id: "menu-item-kwetiaw-siram-seafood", page: "#page-menu-lokalan" },
+                "kwetiaw siram sapi": { id: "menu-item-kwetiaw-siram-sapi", page: "#page-menu-lokalan" },
+                "kwetiaw kuah ayam": { id: "menu-item-kwetiaw-kuah-ayam", page: "#page-menu-lokalan" },
+                "kwetiaw kuah seafood": { id: "menu-item-kwetiaw-kuah-seafood", page: "#page-menu-lokalan" },
+                "kwetiaw kuah sapi": { id: "menu-item-kwetiaw-kuah-sapi", page: "#page-menu-lokalan" },
+                // Menu Lokalan - Sayuran & Sup
+                "tomyam ayam": { id: "menu-item-tomyam-ayam", page: "#page-menu-lokalan" },
+                "tomyam seafood": { id: "menu-item-tomyam-seafood", page: "#page-menu-lokalan" },
+                "tomyam sapi": { id: "menu-item-tomyam-sapi", page: "#page-menu-lokalan" },
+                "capcay ayam": { id: "menu-item-capcay-ayam", page: "#page-menu-lokalan" },
+                "capcay seafood": { id: "menu-item-capcay-seafood", page: "#page-menu-lokalan" },
+                "capcay sapi": { id: "menu-item-capcay-sapi", page: "#page-menu-lokalan" },
+                "capcay special wm": { id: "menu-item-capcay-special-wm", page: "#page-menu-lokalan" },
+                "sapo tahu ayam": { id: "menu-item-sapo-tahu-ayam", page: "#page-menu-lokalan" },
+                "sapo tahu seafood": { id: "menu-item-sapo-tahu-seafood", page: "#page-menu-lokalan" },
+                "sapo tahu sapi": { id: "menu-item-sapo-tahu-sapi", page: "#page-menu-lokalan" },
+                "tongseng ayam": { id: "menu-item-tongseng-ayam", page: "#page-menu-lokalan" },
+                "tongseng sapi": { id: "menu-item-tongseng-sapi", page: "#page-menu-lokalan" },
+                "soto madura": { id: "menu-item-soto-madura", page: "#page-menu-lokalan" },
+                "soto betawi": { id: "menu-item-soto-betawi", page: "#page-menu-lokalan" },
+                "sop ayam": { id: "menu-item-sop-ayam", page: "#page-menu-lokalan" },
+                "sop daging": { id: "menu-item-sop-daging", page: "#page-menu-lokalan" },
+                "sop iga sapi": { id: "menu-item-sop-iga-sapi", page: "#page-menu-lokalan" },
+                "sop buntut": { id: "menu-item-sop-buntut", page: "#page-menu-lokalan" },
+                // Menu Lokalan - Grill
+                "iga goreng penyet": { id: "menu-item-iga-goreng-penyet", page: "#page-menu-lokalan" },
+                "iga bakar": { id: "menu-item-iga-bakar", page: "#page-menu-lokalan" },
+                "iga bakar mozarela": { id: "menu-item-iga-bakar-mozarela", page: "#page-menu-lokalan" },
+                "buntut bakar": { id: "menu-item-buntut-bakar", page: "#page-menu-lokalan" },
+                "buntut bakar double": { id: "menu-item-buntut-bakar-double", page: "#page-menu-lokalan" },
+                "paket hokie": { id: "menu-item-paket-hokie", page: "#page-menu-lokalan" },
+                "paket steamboat": { id: "menu-item-paket-steam", page: "#page-menu-lokalan" },
+
+                // Menu Lokalan - Nusantara
+                "ayam goreng": { id: "menu-item-ayam-goreng", page: "#page-menu-lokalan" },
+                "ayam bakar": { id: "menu-item-ayam-bakar", page: "#page-menu-lokalan" },
+                "ayam geprek": { id: "menu-item-ayam-geprek", page: "#page-menu-lokalan" },
+                "ayam rica rica": { id: "menu-item-ayam-rica-rica", page: "#page-menu-lokalan" },
+                "ayam asam manis": { id: "menu-item-ayam-asam-manis", page: "#page-menu-lokalan" },
+                "ayam lada hitam": { id: "menu-item-ayam-lada-hitam", page: "#page-menu-lokalan" },
+                "ayam kampung gepuk": { id: "menu-item-ayam-kampung-gepuk", page: "#page-menu-lokalan" },
+                "ayam kampung kremes": { id: "menu-item-ayam-kampung-kremes", page: "#page-menu-lokalan" },
+                "ayam kampung bakar": { id: "menu-item-ayam-kampung-bakar", page: "#page-menu-lokalan" },
+                "ayam kampung bakar lada hitam": { id: "menu-item-ayam-kampung-bakar-lada-hitam", page: "#page-menu-lokalan" },
+                "ayam kampung rica rica": { id: "menu-item-ayam-kampung-rica-rica", page: "#page-menu-lokalan" },
+                "ayam kampung lada hitam": { id: "menu-item-ayam-kampung-lada-hitam", page: "#page-menu-lokalan" },
+                "bebek goreng": { id: "menu-item-bebek-goreng", page: "#page-menu-lokalan" },
+                "bebek bakar": { id: "menu-item-bebek-bakar", page: "#page-menu-lokalan" },
+                "bebek rica rica": { id: "menu-item-bebek-rica-rica", page: "#page-menu-lokalan" },
+                "bebek lada hitam": { id: "menu-item-bebek-lada-hitam", page: "#page-menu-lokalan" },
+                "bebek kremes": { id: "menu-item-bebek-kremes", page: "#page-menu-lokalan" },
+                "bebek bakar lada hitam": { id: "menu-item-bebek-bakar-lada-hitam", page: "#page-menu-lokalan" },
+                "bebek sambel gledek": { id: "menu-item-bebek-sambel-gledek", page: "#page-menu-lokalan" },
+                "udang rica rica": { id: "menu-item-udang-rica-rica", page: "#page-menu-lokalan" },
+                "udang asam manis": { id: "menu-item-udang-asam-manis", page: "#page-menu-lokalan" },
+                "udang lada hitam": { id: "menu-item-udang-lada-hitam", page: "#page-menu-lokalan" },
+                "udang telur asin": { id: "menu-item-udang-telur-asin", page: "#page-menu-lokalan" },
+                "udang sambel pete": { id: "menu-item-udang-sambel-pete", page: "#page-menu-lokalan" },
+                "cumi rica rica": { id: "menu-item-cumi-rica-rica", page: "#page-menu-lokalan" },
+                "cumi asam manis": { id: "menu-item-cumi-asam-manis", page: "#page-menu-lokalan" },
+                "cumi lada hitam": { id: "menu-item-cumi-lada-hitam", page: "#page-menu-lokalan" },
+                "cumi telur asin": { id: "menu-item-cumi-telur-asin", page: "#page-menu-lokalan" },
+                "cumi sambel pete": { id: "menu-item-cumi-sambel-pete", page: "#page-menu-lokalan" },
+                "kikil penyet": { id: "menu-item-kikil-penyet", page: "#page-menu-lokalan" },
+                "oseng kikil": { id: "menu-item-oseng-kikil", page: "#page-menu-lokalan" },
+                "kikil sambel pete": { id: "menu-item-kikil-sambel-pete", page: "#page-menu-lokalan" },
+                "oseng daging": { id: "menu-item-oseng-daging", page: "#page-menu-lokalan" },
+                "oseng iga": { id: "menu-item-oseng-iga", page: "#page-menu-lokalan" },
+                "telur barendo": { id: "menu-item-telur-barendo", page: "#page-menu-lokalan" },
+                "terong penyet": { id: "menu-item-terong-penyet", page: "#page-menu-lokalan" },
+                "terong crispy": { id: "menu-item-terong-crispy", page: "#page-menu-lokalan" },
+                // Fast Food - Rice Bowl
+                "ricebowl ayam rica rica": { id: "menu-item-rice-bowl-ayam-rica-rica", page: "#page-fast-food" },
+                "ricebowl ayam lada hitam": { id: "menu-item-rice-bowl-ayam-lada-hitam", page: "#page-fast-food" },
+                "ricebowl udang rica rica": { id: "menu-item-rice-bowl-udang-rica-rica", page: "#page-fast-food" },
+                "ricebowl udang lada hitam": { id: "menu-item-rice-bowl-udang-lada-hitam", page: "#page-fast-food" },
+                "ricebowl cumi rica rica": { id: "menu-item-rice-bowl-cumi-rica-rica", page: "#page-fast-food" },
+                "ricebowl cumi lada hitam": { id: "menu-item-rice-bowl-cumi-lada-hitam", page: "#page-fast-food" },
+                "ricebowl sapi rica rica": { id: "menu-item-rice-bowl-sapi-rica-rica", page: "#page-fast-food" },
+                "ricebowl sapi lada hitam": { id: "menu-item-rice-bowl-sapi-lada-hitam", page: "#page-fast-food" },
+                // Fast Food - Hot Plate
+                "hotplate ayam": { id: "menu-item-hot-plate-ayam", page: "#page-fast-food" },
+                "hotplate udang": { id: "menu-item-hot-plate-udang", page: "#page-fast-food" },
+                "hotplate cumi": { id: "menu-item-hot-plate-cumi", page: "#page-fast-food" },
+                "hotplate sapi": { id: "menu-item-hot-plate-sapi", page: "#page-fast-food" },
+                // Fast Food - Steak
+                "chicken steak": { id: "menu-item-chicken-steak", page: "#page-fast-food" },
+                "crispy chicken steak": { id: "menu-item-crispy-chicken-steak", page: "#page-fast-food" },
+                "beef steak": { id: "menu-item-beef-steak", page: "#page-fast-food" },
+                // Fast Food - Ramen
+                "ramen ayam": { id: "menu-item-ramen-ayam", page: "#page-fast-food" },
+                "ramen ati ampela": { id: "menu-item-ramen-ati-ampela", page: "#page-fast-food" },
+                "ramen seafood": { id: "menu-item-ramen-seafood", page: "#page-fast-food" },
+                "ramen sapi": { id: "menu-item-ramen-sapi", page: "#page-fast-food" },
+                "ramen spesial wm": { id: "menu-item-ramen-spesial-wm", page: "#page-fast-food" },
+                // Fast Food - Pizza & Burger
+                "pizza bolognese": { id: "menu-item-pizza-bolognese", page: "#page-fast-food" },
+                "pizza meatlover": { id: "menu-item-pizza-meatlover", page: "#page-fast-food" },
+                "burger chicken": { id: "menu-item-burger-chicken", page: "#page-fast-food" },
+                "burger beef": { id: "menu-item-burger-beef", page: "#page-fast-food" },
+                // Fast Food - Pasta
+                "spagheti carbonara": { id: "menu-item-spagheti-carbonara", page: "#page-fast-food" },
+                "spagheti bolognese": { id: "menu-item-spagheti-bolognese", page: "#page-fast-food" },
+                // Cemilan - Snack
+                "cireng": { id: "menu-item-cireng", page: "#page-cemilan" },
+                "tempe mendoan": { id: "menu-item-tempe-mendoan", page: "#page-cemilan" },
+                "martabak tahu telur": { id: "menu-item-martabak-tahu-telur", page: "#page-cemilan" },
+                "tahu jerit": { id: "menu-item-tahu-jerit", page: "#page-cemilan" },
+                "tahu bakso goreng": { id: "menu-item-tahu-bakso-goreng", page: "#page-cemilan" },
+                "tahu bakso rebus": { id: "menu-item-tahu-bakso-rebus", page: "#page-cemilan" },
+                "potato cheese ball": { id: "menu-item-potato-cheese-ball", page: "#page-cemilan" },
+                // Cemilan - Gorengan
+                "kentang goreng balado": { id: "menu-item-kentang-goreng-balado", page: "#page-cemilan" },
+                "kentang goreng original": { id: "menu-item-kentang-goreng-original", page: "#page-cemilan" },
+                "singkong goreng balado": { id: "menu-item-singkong-goreng-balado", page: "#page-cemilan" },
+                "singkong goreng original": { id: "menu-item-singkong-goreng-original", page: "#page-cemilan" },
+                "sosis goreng": { id: "menu-item-sosis-goreng", page: "#page-cemilan" },
+                "sosis bakar": { id: "menu-item-sosis-bakar", page: "#page-cemilan" },
+                "lumpia ayam": { id: "menu-item-lumpia-ayam", page: "#page-cemilan" },
+                "lumpia tapai": { id: "menu-item-lumpia-tapai", page: "#page-cemilan" },
+                // Cemilan - Indomie, Roti, Pisang
+                "indomie telur": { id: "menu-item-indomie-goreng-rebus-telur", page: "#page-cemilan" },
+                "indomie ayam": { id: "menu-item-indomie-goreng-rebus-ayam", page: "#page-cemilan" },
+                "indomie ati ampela": { id: "menu-item-indomie-goreng-rebus-ati-ampela", page: "#page-cemilan" },
+                "indomie special wm": { id: "menu-item-indomie-goreng-rebus-special-wm", page: "#page-cemilan" },
+                "pisang goreng original": { id: "menu-item-pisang-goreng-original", page: "#page-cemilan" },
+                "pisang goreng keju": { id: "menu-item-pisang-goreng-keju", page: "#page-cemilan" },
+                "pisang goreng coklat": { id: "menu-item-pisang-goreng-coklat", page: "#page-cemilan" },
+                "pisang goreng coklat keju": { id: "menu-item-pisang-goreng-coklat-keju", page: "#page-cemilan" },
+                "pisang bakar original": { id: "menu-item-pisang-bakar-original", page: "#page-cemilan" },
+                "pisang bakar keju": { id: "menu-item-pisang-bakar-keju", page: "#page-cemilan" },
+                "pisang bakar coklat": { id: "menu-item-pisang-bakar-coklat", page: "#page-cemilan" },
+                "pisang bakar coklat keju": { id: "menu-item-pisang-bakar-coklat-keju", page: "#page-cemilan" },
+                "roti bakar keju": { id: "menu-item-roti-bakar-keju", page: "#page-cemilan" },
+                "roti bakar coklat": { id: "menu-item-roti-bakar-coklat", page: "#page-cemilan" },
+                "roti bakar coklat keju": { id: "menu-item-roti-bakar-coklat-keju", page: "#page-cemilan" },
+                // Minuman
+                "es campur": { id: "menu-item-es-campur", page: "#page-minuman" },
+                "alpukat kocok": { id: "menu-item-alpukat-kocok", page: "#page-minuman" },
+                "es dawet": { id: "menu-item-es-dawet", page: "#page-minuman" },
+                "es teler": { id: "menu-item-es-teler", page: "#page-minuman" },
+                "degan jeruk": { id: "menu-item-degan-jeruk", page: "#page-minuman" },
+                "degan susu": { id: "menu-item-degan-susu", page: "#page-minuman" },
+
+                "kopi susu milenial": { id: "menu-item-kopi-susu-milenial", page: "#page-minuman" },
+  "kopi susu aren": { id: "menu-item-kopi-susu-aren", page: "#page-minuman" },
+  "choco butter": { id: "menu-item-choco-butter", page: "#page-minuman" },
+  "milenial salty": { id: "menu-item-milenial-salty", page: "#page-minuman" },
+  "moca mint choco": { id: "menu-item-moca-mint-choco", page: "#page-minuman" },
+  "tiramisu": { id: "menu-item-tiramisu", page: "#page-minuman" },
+
+  // --- KOPI STANDAR ---
+  "kopi hitam americano": { id: "menu-item-americano", page: "#page-minuman" },
+  "long black": { id: "menu-item-long-black", page: "#page-minuman" },
+  "latte classic": { id: "menu-item-latte-classic", page: "#page-minuman" },
+  "vanilla latte": { id: "menu-item-vanilla-latte", page: "#page-minuman" },
+  "caramel latte": { id: "menu-item-caramel-latte", page: "#page-minuman" },
+  "hazelnut latte": { id: "menu-item-hazelnut-latte", page: "#page-minuman" },
+  "cappucino": { id: "menu-item-capuchino", page: "#page-minuman" },
+  "avocado coffe": { id: "menu-item-avocado-coffe", page: "#page-minuman" },
+  "affogato": { id: "menu-item-affogato", page: "#page-minuman" },
+  "caramel machiato": { id: "menu-item-caramel-machiato", page: "#page-minuman" },
+  "kopi susu butter": { id: "menu-item-kopi-susu-butter", page: "#page-minuman" },
+  "matcha frappe": { id: "menu-item-matcha-frappe", page: "#page-minuman" },
+  "coklat frappe": { id: "menu-item-coklat-frappe", "page": "#page-minuman" },
+  "vanila frappe": { id: "menu-item-vanila-frappe", "page": "#page-minuman" },
+  "cookkies frappe": { id: "menu-item-cokkkies-frape", page: "#page-minuman" },
+
+  "moca float": { id: "menu-item-moca-float", page: "#page-minuman" },
+  "strawbery float": { id: "menu-item-strawbery-float", page: "#page-minuman" },
+  "milo delight": { id: "menu-item-milo-delight", page: "#page-minuman" },
+  "banana cream float": { id: "menu-item-banana-cream-float", page: "#page-minuman" },
+  "cake & cream": { id: "menu-item-cake-cream", page: "#page-minuman" },
+  "mocktail pinoro": { id: "menu-item-pinoro", page: "#page-minuman" },
+  "strawberry frizz": { id:"menu-item-strawkid",page: "#page-minuman" },
+  "manggo lessi": {id: "menu-item-mangkid", page:"#page-minuman" },
+  "white lecy": {id:"menu-item-whitekid", page:"#page-minuman" },
+
+  "es teh manis": { id: "menu-item-teh-manis", page: "#page-minuman" },
+  "teh tawar hangat": { id: "menu-item-teh-tawar", page: "#page-minuman" },
+  "teh tarik": { id: "menu-item-teh-tarik", page: "#page-minuman" },
+  "lecy tea": { id: "menu-item-lecy-tea", page: "#page-minuman" },
+  "longan tea": { id: "menu-item-longan-tea", page: "#page-minuman" },
+  "lemon tea": { id: "menu-item-lemon-tea", page: "#page-minuman" },
+  "peach tea": { id: "menu-item-peach-tea", page: "#page-minuman" },
+  "strawberry tea": { id: "menu-item-strawbery-tea", page: "#page-minuman" },
+  "manggo tea": { id: "menu-item-manggo-tea", page: "#page-minuman" },
+  "honey lemon": { id: "menu-item-honey-lemon", page: "#page-minuman" },
+
+  "matcha": { id: "menu-item-matcha", page: "#page-minuman" },
+  "milo": { id: "menu-item-milo", page: "#page-minuman" },
+  "taro": { id: "menu-item-taro", page: "#page-minuman" },
+  "redvelvet": { id: "menu-item-redvelvet", page: "#page-minuman" },
+  "cincau gula aren": { id: "menu-item-cincau-gula-aren", page: "#page-minuman" },
+  "dark chocolate": { id: "menu-item-dark-chocolate", page: "#page-minuman" },
+  "caramel chocolate": { id: "menu-item-caramel-chocolate", page: "#page-minuman" },
+  "vanila chocolate": { id: "menu-item-vanila-chocolate", page: "#page-minuman" },
+  "hazelnut chocolate": { id: "menu-item-hazelnut-chocolate", page: "#page-minuman" },
+
+  // --- JUS & MINUMAN TRADISIONAL ---
+  "es jeruk manis": { id: "menu-item-jeruk-manis", page: "#page-minuman" },
+  "es jeruk kunci": { "id": "menu-item-jeruk-kunci", page: "#page-minuman" },
+  "jeruk kunci sunmoy": { id: "menu-item-jeruk-kunci-sunmoy", page: "#page-minuman" },
+  "jus alpukat": { id: "menu-item-jus-alpukat", page: "#page-minuman" },
+  "jus mangga": { id: "menu-item-jus-mangga", page: "#page-minuman" },
+  "jus naga": { id: "menu-item-jus-naga", page: "#page-minuman" },
+  "jus melon": { id: "menu-item-jus-melon", page: "#page-minuman" },
+  "jeruk kunci longan": { id: "menu-item-jeruk-kunci-longan", page: "#page-minuman" },
+  "wedang jahe": { id: "menu-item-wedang-jahe", page: "#page-minuman" },
+  "artisan tea": { id: "menu-item-artisan-tea", page: "#page-minuman" }
+,
+                // Tambahan
+                "nasi putih": { id: "menu-item-nasi-putih", page: "#page-tambahan" },
+                "sambal": { id: "menu-item-sambal-geprek", page: "#page-tambahan" },
+                "kerupuk": { id: "menu-item-telur-dadar", page: "#page-tambahan" }
+            };
+
+            // --- FUNGSI NAVIGASI Halaman ---
+            function showPage(pageId) {
+                // Sembunyikan semua halaman
+                menuPages.forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                // Tampilkan halaman yang diminta
+                const activePage = document.getElementById(pageId);
+                if (activePage) {
+                    activePage.classList.add('active');
+                    window.scrollTo(0, 0); // Selalu scroll ke atas saat ganti halaman
+                } else {
+                    // Jika ID tidak ada, tampilkan halaman utama
+                    document.getElementById('page-utama').classList.add('active');
+                }
+            }
+
+            // Atur halaman berdasarkan hash URL saat memuat
+            function handlePageNavigation() {
+                const hash = window.location.hash;
+                let pageId = 'page-utama'; // Default
+
+                if (hash && hash.startsWith('#page-')) {
+                    pageId = hash.substring(1); // Hapus '#'
+                }
+                
+                showPage(pageId);
+            }
+
+            // Listener untuk klik link navigasi
+            pageLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#page-')) {
+                        // e.preventDefault(); // Tidak perlu preventDefault jika sudah pakai hash
+                        window.location.hash = href;
+                    }
+                });
+            });
+
+            // Listener untuk perubahan hash (mis. tombol back/forward browser)
+            window.addEventListener('hashchange', handlePageNavigation);
+
+            // Tampilkan halaman awal saat memuat
+            handlePageNavigation();
+
+
+            // --- FUNGSI TAHUN OTOMATIS DI FOOTER ---
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+
+            // --- FUNGSI ANIMASI SLIDE-IN GAMBAR ---
+            const animatedImage = document.getElementById('animated-image-container');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing setelah animasi
+                    }
+                });
+            }, { threshold: 0.5 }); // Muncul saat 50% terlihat
+
+            if (animatedImage) {
+                observer.observe(animatedImage);
+            }
+
+
+            // --- FUNGSI SLIDER MENU HORIZONTAL ---
+            const sliderButtonsPrev = document.querySelectorAll('.slider-btn-prev');
+            const sliderButtonsNext = document.querySelectorAll('.slider-btn-next');
+            const sliderWidth = 300; // Lebar scroll per klik (sesuaikan)
+
+            sliderButtonsPrev.forEach(button => {
+                button.addEventListener('click', () => {
+                    const sliderId = button.getAttribute('data-slider');
+                    const slider = document.getElementById(sliderId);
+                    if (slider) {
+                        slider.scrollBy(-sliderWidth, 0);
+                    }
+                });
+            });
+
+            sliderButtonsNext.forEach(button => {
+                button.addEventListener('click', () => {
+                    const sliderId = button.getAttribute('data-slider');
+                    const slider = document.getElementById(sliderId);
+                    if (slider) {
+                        slider.scrollBy(sliderWidth, 0);
+                    }
+                });
+            });
+
+
+            // --- FUNGSI SEARCH (PENCARIAN) ---
+            
+            // Fungsi search BARU yang disempurnakan
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+                if (query.length < 2) { // Minimal 2 huruf untuk mencari
+                    return;
+                }
+
+                let targetId = null;
+                let targetPage = null;
+
+                // Cari kecocokan pertama dalam searchMap
+                // Ini akan mencocokkan "soto" dengan "soto madura"
+                const allKeywords = Object.keys(searchMap);
+                const foundKey = allKeywords.find(key => key.includes(query));
+
+                if (foundKey) {
+                    targetId = searchMap[foundKey].id;
+                    targetPage = searchMap[foundKey].page;
+                }
+
+                // Jika ditemukan, navigasi ke item
+                if (targetId && targetPage) {
+                    // Jika halaman target belum aktif, pindah halaman dulu
+                    if (window.location.hash !== targetPage) {
+                        window.location.hash = targetPage;
+                        
+                        // Beri sedikit waktu agar halaman baru render sebelum scroll
+                        setTimeout(() => {
+                            const element = document.getElementById(targetId);
+                            if (element) {
+                                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                // Highlight elemen target
+                                element.style.transition = 'all 0.3s';
+                                element.style.boxShadow = '0 0 20px 5px #fde047'; // Highlight kuning
+                                element.style.transform = 'scale(1.03)';
+                                setTimeout(() => {
+                                    element.style.boxShadow = ''; // Hapus highlight
+                                    element.style.transform = '';
+                                }, 2500); // Highlight selama 2.5 detik
+                            }
+                        }, 500); // Waktu tunggu 0.5 detik
+                    } else {
+                        // Jika sudah di halaman yang benar, langsung scroll
+                        const element = document.getElementById(targetId);
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            element.style.transition = 'all 0.3s';
+                            element.style.boxShadow = '0 0 20px 5px #fde047';
+                            element.style.transform = 'scale(1.03)';
+                            setTimeout(() => {
+                                element.style.boxShadow = '';
+                                element.style.transform = '';
+                            }, 2500);
+                        }
+                    }
+                } else {
+                    // Jika tidak ditemukan, goyangkan search bar
+                    searchContainer.classList.add('shake-search');
+                    setTimeout(() => {
+                        searchContainer.classList.remove('shake-search');
+                    }, 500);
+                }
+            }
+
+            // Jalankan search saat tombol diklik atau Enter ditekan
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            // Hapus highlight saat input dikosongkan (Fitur ini dihapus karena search baru)
+        });
+    </script>
+
+</body>
+</html>
