@@ -120,87 +120,19 @@
         .shake-search {
           animation: shake 0.5s ease-in-out;
         }
-        /* Container Utama Lingkaran */
-        .floating-promo {
-            position: fixed;
-            left: 20px;          /* Jarak dari kiri */
-            bottom: 20px;        /* Jarak dari bawah */
-            width: 100px;        /* Diameter lingkaran */
-            height: 100px;
-            z-index: 10000;      /* Paling depan (di atas elemen lain) */
-    
-    /* Animasi Masuk (Pop Up) */
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            animation-delay: 2s; /* Muncul 2 detik setelah web dibuka */
-    
-    /* Awalnya sembunyi agar animasi jalan */
-            transform: scale(0); 
-            opacity: 0;
-        }
-
-/* Gambar di dalam lingkaran */
-        .floating-promo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;   /* Agar gambar tidak gepeng */
-            border-radius: 50%;  /* Membuat gambar jadi bulat */
-            border: 3px solid #fff; /* List putih */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Bayangan */
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-        .floating-promo:hover img {
-            transform: scale(1.1) rotate(5deg); /* Membesar sedikit dan miring */
-        }
-
-/* Tombol Close (X) Kecil */
-        .btn-close-promo {
-        position: absolute;
-        top: 0;
-        right: 0;
-    width: 25px;
-    height: 25px;
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* Animasi Keyframes (Efek Muncul) */
-@keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Jika layar HP kecil, ukuran agak dikecilkan */
-@media (max-width: 480px) {
-    .floating-promo {
-        width: 80px;
-        height: 80px;
-        bottom: 15px;
-        left: 15px;
-    }
-}
 
     </style>
 </head>
 <body class="bg-black text-white">
     <header class="sticky-header py-4 px-4 md:px-8">
         <div class="container mx-auto flex justify-between items-center">
-    
             <a href="#page-utama" class="text-2xl md:text-3xl font-black uppercase tracking-wider page-link">
                 Warunk Milenial </a>
             <nav class="hidden md:flex gap-6 lg:gap-10">
                 <a href="#page-minuman" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Minuman</a>
                 <a href="#page-menu-lokalan" class="text-lg font-medium text-gray-300 hover:text-white transition-colors page-link">Makanan Berat</a>
                 <a href="#page-cemilan" class="text-lg font-medium text-gray-300 hover:text-white transition-colors page-link">Makanan Ringan</a>
+                <a href="#page-fast-food" class="text-lg font-medium text-gray-300 hover:text-white transition-colors page-link">Fast Food</a>
             </nav>
             <div class="search-bar flex items-center rounded-full py-2 px-4" id="search-container">
                 <input type="search" id="search-input" placeholder="Cari disini;Contoh'Es Teler'" class="outline-none border-none w-24 md:w-48 transition-all duration-300 focus:w-32 md:focus:w-64">
@@ -1267,10 +1199,6 @@
                     }, 500);
                 }
             }
-            function tutupIklan() {
-    const iklan = document.getElementById('promo-circle');
-    iklan.style.display = 'none'; // Menghilangkan elemen
-}
 
             searchButton.addEventListener('click', performSearch);
             searchInput.addEventListener('keydown', (e) => {
@@ -1280,12 +1208,7 @@
             });
         });
     </script>
-    <div id="promo-circle" class="floating-promo">
-    <button class="btn-close-promo" onclick="tutupIklan()">&#10005;</button>
-    
-    <a href="#page-fast-food"> <img src="beefsteak.webp" alt="Promo Kopi">
-    </a>
-</div>
+
 </body>
 
 </html>
