@@ -120,64 +120,6 @@
         .shake-search {
           animation: shake 0.5s ease-in-out;
         }
-        #side-news-container {
-            position: fixed;
-             left: 20px;            /* Jarak dari kiri layar */
-    bottom: 20px;          /* Jarak dari bawah */
-    width: 40px;           /* Lebar jalur teks */
-    height: 60vh;          /* Tinggi jalur (60% layar) */
-    background: rgba(0, 0, 0, 0.8); /* Latar belakang hitam transparan */
-    border-radius: 20px;   /* Sudut melengkung */
-    color: #fff;           /* Warna teks */
-    overflow: hidden;      /* Sembunyikan teks yang keluar jalur */
-    z-index: 9999;         /* Pastikan selalu di atas elemen lain */
-    
-    /* Awalnya disembunyikan */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(50px);
-    transition: all 0.5s ease-in-out;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    border: 1px solid #d4af37; /* Warna emas (opsional) */
-}
-
-/* Class untuk memunculkan elemen (Dipanggil Javascript) */
-#side-news-container.muncul {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* Jalur Animasi */
-.news-track {
-    display: flex;
-    flex-direction: column; /* Susun teks ke bawah */
-    gap: 50px;              /* Jarak antar kalimat */
-    
-    /* Animasi berjalan ke atas */
-    animation: gerakKeAtas 15s linear infinite;
-    padding-top: 100%;      /* Agar mulai dari bawah layar */
-}
-
-/* Gaya Teks */
-.news-item {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 14px;
-    white-space: nowrap;      /* Teks tidak turun baris */
-    
-    /* Memutar Teks agar vertikal */
-    writing-mode: vertical-rl; 
-    text-orientation: mixed;
-    transform: rotate(180deg); /* Agar terbaca dari bawah ke atas */
-    text-align: center;
-}
-
-/* Animasi Keyframes */
-@keyframes gerakKeAtas {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-100%); } /* Geser terus ke atas */
-}
 
     </style>
 </head>
@@ -207,14 +149,13 @@
     </header>
 
     <main>
-       <section id="page-utama" class="menu-page active" style="padding-top: 0;">
-    <div id="batas-video" class="video-background-container">
-        <video class="video-background" autoplay loop muted playsinline
-            src="wm.mp4">
-            Browser Anda tidak mendukung tag video.
-        </video>
-    </div>
-</section>
+        <section id="page-utama" class="menu-page active" style="padding-top: 0;">
+            <div class="video-background-container">
+                <video class="video-background" autoplay loop muted playsinline
+                    src="wm.mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
             <div class="relative h-screen flex flex-col justify-center items-center text-center px-4">
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
                     Selamat Datang
@@ -1267,38 +1208,7 @@
             });
         });
     </script>
-<div id="side-news-container">
-    <div class="news-track">
-        <span class="news-item">🔥 PROMO HARI INI: BELI 1 GRATIS 1 KOPI SUSU</span>
-        <span class="news-item">☕ DISKON 20% UNTUK PELAJAR</span>
-        <span class="news-item">📢 BUKA SETIAP HARI JAM 10.00 - 23.00</span>
-        <span class="news-item">📍 LOKASI: JL. PENDIDIKAN NO. 1</span>
-    </div>
-    
-</div>
-<script>
-    // Ambil elemen
-    const widgetTeks = document.getElementById('side-news-container');
-    const batasVideo = document.getElementById('batas-video');
 
-    // Fungsi cek scroll
-    window.addEventListener('scroll', function() {
-        if (!batasVideo) return; // Jaga-jaga jika ID lupa dipasang
-
-        // Ambil posisi video
-        const posisiVideo = batasVideo.offsetTop + batasVideo.offsetHeight;
-        const posisiScroll = window.scrollY;
-
-        // LOGIKA: Jika scroll sudah melewati bagian bawah video
-        if (posisiScroll > posisiVideo - 300) { 
-            // Angka -300 artinya "muncul sedikit sebelum video benar-benar habis"
-            widgetTeks.classList.add('muncul');
-        } else {
-            // Hilang lagi kalau scroll ke atas
-            widgetTeks.classList.remove('muncul');
-        }
-    });
-</script>
 </body>
 
 </html>
