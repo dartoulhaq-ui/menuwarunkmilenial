@@ -120,7 +120,16 @@
         .shake-search {
           animation: shake 0.5s ease-in-out;
         }
-
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%; 
+            animation: marquee-animation 25s linear infinite; 
+        }
+        @keyframes marquee-animation {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -801,6 +810,11 @@
         <!-- finish -->
 
     </main>
+    <div id="bottom-running-bar" class="fixed bottom-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm text-yellow-400 z-40 overflow-hidden transform translate-y-full transition-transform duration-700 ease-out border-t border-yellow-400/30 py-2 text-sm md:text-base font-medium">
+        <div class="marquee-content">
+            📢 Promo Spesial Hari Ini: Diskon 10% untuk semua menu Iga Bakar! | 🕒 Buka Setiap Hari Pukul 10:00 - 22:00 WIB | 🛵 Tersedia di GoFood & GrabFood | Menerima Pesanan Untuk Acara & Gathering.
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -809,8 +823,12 @@
             const searchInput = document.getElementById('search-input');
             const searchButton = document.getElementById('search-button');
             const searchContainer = document.getElementById('search-container');
-            
-          
+          setTimeout(() => {
+                const bottomBar = document.getElementById('bottom-running-bar');
+                if (bottomBar) {
+                    bottomBar.classList.remove('translate-y-full');
+                }
+            }, 2000);
             const searchMap = {
                 // Menu Lokalan - Nasi Goreng
                 "nasi goreng telur": { id: "menu-item-nasi-goreng-telur", page: "#page-menu-lokalan" },
