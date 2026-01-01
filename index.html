@@ -105,7 +105,7 @@
                         </div>
                     </div>                  
                     <div id="slider-lokalan" class="menu-slider flex overflow-x-auto gap-4 md:gap-6 py-4">
-                        <a href="#page-menu-kuah" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
+                        <a href="#page-menu-lokalan" onclick="setTimeout(() => { document.getElementById('target-kuah').scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300)" class="page-link flex-shrink-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden group">
                             <img src="logosoto.webp" class="w-full h-48 md:h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" loading="lazy" width="300" height="300">
                             <div class="bg-gray-900 p-4">
                                 <h3 class="text-xl font-semibold">Sop,Soto & Tongseng</h3>
@@ -346,11 +346,8 @@
                 <div class="menu-item-card" id="menu-item-kwetiaw-kuah-sapi"><img src="KWHSAPI.jpg" alt="Kwetiaw Kuah Sapi" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Kwetiaw Kuah Sapi</h3><span class="text-2xl font-semibold text-yellow-400">35K</span></div></div>
             </div>
 
-        
-            <h2 class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Sayuran & Sup</h2>
-            <section id="page-menu-kuah" class="menu-page container mx-auto px-4 py-8">
+            <h2 id="target-kuah" class="text-3xl font-bold border-b border-gray-700 pb-2 mb-6">Sayuran & Sup</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
-        
                 <div class="menu-item-card" id="menu-item-tomyam-ayam"><img src="tomyam-ayam.webp" alt="Tomyam Ayam" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tomyam Ayam</h3><span class="text-2xl font-semibold text-yellow-400">43K</span></div></div>
                 <div class="menu-item-card" id="menu-item-tomyam-seafood"><img src="tomyam-sfd.webp" alt="Tomyam Seafood" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tomyam Seafood</h3><span class="text-2xl font-semibold text-yellow-400">45K</span></div></div>
                 <div class="menu-item-card" id="menu-item-tomyam-sapi"><img src="tomyam-sapi.webp" alt="Tomyam Sapi" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Tomyam Sapi</h3><span class="text-2xl font-semibold text-yellow-400">50K</span></div></div>
@@ -370,11 +367,9 @@
                 <div class="menu-item-card" id="menu-item-sop-iga-sapi"><img src="sopiga.webp" alt="Sop Iga Sapi" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sop Iga Sapi</h3><span class="text-2xl font-semibold text-yellow-400">65K</span></div></div>
                 <div class="menu-item-card" id="menu-item-sop-buntut"><img src="sopbuntut.webp" alt="Sop Buntut" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Sop Buntut</h3><span class="text-2xl font-semibold text-yellow-400">70K</span></div></div>
             </div>
-        </section>
 
             <h2 class="text-3xl font-bold text-yellow-400 border-gray-700 pb-2 mb-6">Special The Grill</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
-                
                 <div class="menu-item-card" id="menu-item-iga-goreng-penyet"><img src="igagrg.jpg" alt="Iga Goreng Penyet" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Iga Goreng Penyet</h3><span class="text-2xl font-semibold text-yellow-400">55K</span></div></div>
                 <div class="menu-item-card" id="menu-item-iga-bakar"><img src="igabakr.webp" alt="Iga Bakar" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Iga Bakar</h3><span class="text-2xl font-semibold text-yellow-400">60K</span></div></div>
                 <div class="menu-item-card" id="menu-item-iga-bakar-mozarela"><img src="igamoza.webp" alt="Iga Bakar Mozarela" class="w-full h-64 object-cover rounded-lg mb-4"loading="lazy" width="300" height="300"><div class="flex justify-between items-center"><h3 class="text-2xl font-bold animated-underline">Iga Bakar Mozarela</h3><span class="text-2xl font-semibold text-yellow-400">65K</span></div></div>
