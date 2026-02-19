@@ -117,4 +117,14 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
         }
-        
+    @keyframes popJepret {
+    0% { transform: translateY(150px) scale(0.5); opacity: 0; }
+    70% { transform: translateY(-15px) scale(1.05); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .animasi-pop-jepret {
+        animation: popJepret 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    .animasi-putar-lambat {
+        animation: spin 3s linear infinite;
+    }
