@@ -128,3 +128,19 @@
     .animasi-putar-lambat {
         animation: spin 3s linear infinite;
     }
+    .animasi-warunk {
+        animation: neonWarunk 3s infinite;
+    }
+    .animasi-milenial {
+        animation: neonMilenial 3s infinite;
+    }
+    @keyframes neonWarunk {
+        0%, 100% { color: #fde047; text-shadow: 0 0 10px rgba(253,224,71,0.6); } 
+        33% { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.6); } 
+        66% { color: #111827; text-shadow: none; } 
+    }
+    @keyframes neonMilenial {
+        0%, 100% { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.6); } 
+        33% { color: #fde047; text-shadow: 0 0 10px rgba(253,224,71,0.6); } 
+        66% { color: #111827; text-shadow: none; } 
+    }
