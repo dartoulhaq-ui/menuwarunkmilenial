@@ -117,14 +117,4 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
         }
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #facc15; 
-        }
+        
