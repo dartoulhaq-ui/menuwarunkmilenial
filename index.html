@@ -99,7 +99,7 @@
                         </a>
                     </div>
                 </div>
-                <p class="text-lg text-gray-400">[Tunggu 5 detik jika gambar belum muncul]</p>
+                <p id="pesan-tunggu" class="text-lg text-gray-400 transition-opacity duration-500">[Tunggu 5 detik jika gambar belum muncul]</p>
                         
                 <div class="mb-16">
                     <div class="flex justify-between items-center mb-6">
@@ -720,6 +720,15 @@
             const searchInput = document.getElementById('search-input');
             const searchButton = document.getElementById('search-button');
             const searchContainer = document.getElementById('search-container');
+          setTimeout(function() {
+            const pesan = document.getElementById("pesan-tunggu");
+            if (pesan) {
+                pesan.style.opacity = "0";
+                setTimeout(function() {
+                    pesan.style.display = "none";
+                }, 500);
+            }
+        }, 5000);
           setTimeout(() => {
                 const bottomBar = document.getElementById('bottom-running-bar');
                 if (bottomBar) {
