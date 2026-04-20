@@ -185,7 +185,7 @@ function App() {
         </div>
 
         {/* FILTER SECTION */}
-        <div className="bg-white rounded-2xl p-4 shadow-sm mb-6">
+        <div className="sticky top-[72px] z-30 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-sm mb-6 border border-gray-100 transition-all">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-bold text-gray-800">Filter & Urutkan</h3>
           </div>
@@ -198,7 +198,7 @@ function App() {
                 onClick={() => setSortBy("name")}
                 className={`px-3 py-1 rounded-full text-sm font-medium transition ${
                   sortBy === "name" 
-                    ? "bg-yellow-500 text-black" 
+                    ? "bg-yellow-500 text-black shadow-md" 
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -208,7 +208,7 @@ function App() {
                 onClick={() => setSortBy("price-low")}
                 className={`px-3 py-1 rounded-full text-sm font-medium transition ${
                   sortBy === "price-low" 
-                    ? "bg-yellow-500 text-black" 
+                    ? "bg-yellow-500 text-black shadow-md" 
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -218,7 +218,7 @@ function App() {
                 onClick={() => setSortBy("price-high")}
                 className={`px-3 py-1 rounded-full text-sm font-medium transition ${
                   sortBy === "price-high" 
-                    ? "bg-yellow-500 text-black" 
+                    ? "bg-yellow-500 text-black shadow-md" 
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -230,7 +230,7 @@ function App() {
           {/* Category Filter */}
           <div>
             <label className="text-xs font-semibold text-gray-600 mb-2 block">Kategori:</label>
-            <div className="flex overflow-x-auto gap-2 pb-2">
+            <div className="flex overflow-x-auto gap-2 pb-2 no-scrollbar">
               <button 
                 onClick={() => {
                   setSelectedCategory(null);
@@ -238,7 +238,7 @@ function App() {
                 }}
                 className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition ${
                   selectedCategory === null 
-                    ? "bg-yellow-500 text-black" 
+                    ? "bg-yellow-500 text-black shadow-md" 
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -253,7 +253,7 @@ function App() {
                   key={cat}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition ${
                     selectedCategory === cat 
-                      ? "bg-yellow-500 text-black" 
+                      ? "bg-yellow-500 text-black shadow-md" 
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
