@@ -189,7 +189,6 @@ function App() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-bold text-gray-800">Filter & Urutkan</h3>
           </div>
-          
           {/* Sort Options */}
           <div className="mb-4">
             <label className="text-xs font-semibold text-gray-600 mb-2 block">Urutkan Berdasarkan:</label>

@@ -5,7 +5,7 @@
     "kategori": "Nasi Goreng",
     "harga": 25000,
     "deskripsi": "Nasi goreng dengan topping telur",
-    "gambar": "public/images/NGTELUR.jpg"
+    "gambar": "/images/NGTELUR.jpg"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "kategori": "Nasi Goreng",
     "harga": 25000,
     "deskripsi": "Nasi goreng dengan topping sosis",
-    "gambar": "public/images/NGSOSIS.jpg"
+    "gambar": "/images/NGSOSIS.jpg"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "kategori": "Nasi Goreng",
     "harga": 25000,
     "deskripsi": "Nasi goreng dengan topping pete",
-    "gambar": "public/images/NGPET.jpg"
+    "gambar": "/images/NGPET.jpg"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "kategori": "Nasi Goreng",
     "harga": 28000,
     "deskripsi": "Nasi goreng dengan topping bakso",
-    "gambar": "public/images/NGBAKS.jpg"
+    "gambar": "/images/NGBAKS.jpg"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "kategori": "Nasi Goreng",
     "harga": 28000,
     "deskripsi": "Nasi goreng dengan topping ati ampela",
-    "gambar": "public/images/NGATI.jpg"
+    "gambar": "/images/NGATI.jpg"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "kategori": "Nasi Goreng",
     "harga": 30000,
     "deskripsi": "Nasi goreng dengan topping ayam",
-    "gambar": "public/images/NGYM.jpg"
+    "gambar": "/images/NGYM.jpg"
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "kategori": "Nasi Goreng",
     "harga": 30000,
     "deskripsi": "Nasi goreng dengan topping ikan asin",
-    "gambar": "public/images/NGIASIN.jpg"
+    "gambar": "/images/NGIASIN.jpg"
   },
   {
     "id": 8,
@@ -61,7 +61,7 @@
     "kategori": "Nasi Goreng",
     "harga": 35000,
     "deskripsi": "Nasi goreng seafood",
-    "gambar": "public/images/NGSFD.jpg"
+    "gambar": "/images/NGSFD.jpg"
   },
   {
     "id": 9,
@@ -69,7 +69,7 @@
     "kategori": "Nasi Goreng",
     "harga": 38000,
     "deskripsi": "Nasi goreng khas hongkong",
-    "gambar": "public/images/NGHON.jpg"
+    "gambar": "/images/NGHON.jpg"
   },
   {
     "id": 10,
@@ -77,7 +77,7 @@
     "kategori": "Nasi Goreng",
     "harga": 38000,
     "deskripsi": "Nasi goreng gila spesial",
-    "gambar": "public/images/NGGILA.jpg"
+    "gambar": "/images/NGGILA.jpg"
   },
   {
     "id": 11,
@@ -85,7 +85,7 @@
     "kategori": "Nasi Goreng",
     "harga": 40000,
     "deskripsi": "Menu spesial Warunk Milenial",
-    "gambar": "public/images/NGSPESIAL.jpg"
+    "gambar": "/images/NGSPESIAL.jpg"
   },
   {
     "id": 12,
@@ -93,7 +93,7 @@
     "kategori": "Mie",
     "harga": 25000,
     "deskripsi": "Mie goreng telur",
-    "gambar": "public/images/MIGTELUR.jpg"
+    "gambar": "/images/MIGTELUR.jpg"
   },
   {
     "id": 13,
@@ -101,7 +101,7 @@
     "kategori": "Mie",
     "harga": 30000,
     "deskripsi": "Mie goreng ayam",
-    "gambar": "public/images/MIGAYAM.jpg"
+    "gambar": "/images/MIGAYAM.jpg"
   },
   {
     "id": 14,
@@ -109,7 +109,7 @@
     "kategori": "Mie",
     "harga": 35000,
     "deskripsi": "Mie goreng seafood",
-    "gambar": "public/images/MIGSFD.webp"
+    "gambar": "/images/MIGSFD.webp"
   },
   {
     "id": 15,
@@ -117,7 +117,7 @@
     "kategori": "Mie",
     "harga": 40000,
     "deskripsi": "Mie goreng spesial khas WM",
-    "gambar": "public/images/MIGSPESIAL.jpg"
+    "gambar": "/images/MIGSPESIAL.jpg"
   },
   {
     "id": 16,
@@ -125,7 +125,7 @@
     "kategori": "Pizza",
     "harga": 30000,
     "deskripsi": "Pizza topping saus bolognese",
-    "gambar": "public/images/pizzabolog.jpg"
+    "gambar": "/images/pizzabolog.jpg"
   },
   {
     "id": 17,
@@ -133,7 +133,7 @@
     "kategori": "Pizza",
     "harga": 35000,
     "deskripsi": "Pizza topping daging",
-    "gambar": "public/images/pizzameat.webp"
+    "gambar": "/images/pizzameat.webp"
   },
   {
     "id": 18,
@@ -141,7 +141,7 @@
     "kategori": "Burger",
     "harga": 27000,
     "deskripsi": "Burger isi ayam",
-    "gambar": "public/images/burger chicken.png"
+    "gambar": "/images/burger chicken.png"
   },
   {
     "id": 19,
@@ -149,7 +149,7 @@
     "kategori": "Burger",
     "harga": 30000,
     "deskripsi": "Burger isi daging sapi",
-    "gambar": "public/images/burgerbeef.jpg"
+    "gambar": "/images/burgerbeef.jpg"
   },
   {
     "id": 20,
@@ -157,7 +157,7 @@
     "kategori": "Minuman",
     "harga": 25000,
     "deskripsi": "Es campur segar",
-    "gambar": "public/images/escampur.jpeg"
+    "gambar": "/images/escampur.jpeg"
   },
   {
     "id": 21,
@@ -165,7 +165,7 @@
     "kategori": "Minuman",
     "harga": 25000,
     "deskripsi": "Es teler segar",
-    "gambar": "public/images/esteler.jpg"
+    "gambar": "/images/esteler.jpg"
   },
   {
     "id": 22,
@@ -173,7 +173,7 @@
     "kategori": "Minuman",
     "harga": 25000,
     "deskripsi": "Es dawet tradisional",
-    "gambar": "public/images/esdawet.jpeg"
+    "gambar": "/images/esdawet.jpeg"
   },
   {
     "id": 23,
@@ -181,7 +181,7 @@
     "kategori": "Minuman",
     "harga": 20000,
     "deskripsi": "Kelapa muda",
-    "gambar": "public/images/esdegan.jpg"
+    "gambar": "/images/esdegan.jpg"
   },
   {
     "id": 24,
@@ -189,7 +189,7 @@
     "kategori": "Minuman",
     "harga": 23000,
     "deskripsi": "Kelapa muda campur jeruk",
-    "gambar": "public/images/esdeganjeruk.jpeg"
+    "gambar": "/images/esdeganjeruk.jpeg"
   },
   {
     "id": 25,
@@ -197,7 +197,7 @@
     "kategori": "Coffee",
     "harga": 15000,
     "deskripsi": "Kopi Hitam Americano",
-    "gambar": "public/images/americano.png"
+    "gambar": "/images/americano.png"
   },
   {
     "id": 26,
@@ -205,7 +205,7 @@
     "kategori": "Coffee",
     "harga": 22000,
     "deskripsi": "Latte klasik",
-    "gambar": "public/images/latteclass.webp"
+    "gambar": "/images/latteclass.webp"
   },
   {
     "id": 29,
@@ -213,7 +213,7 @@
     "kategori": "Tea",
     "harga": 13000,
     "deskripsi": "Teh Tawar(Bisa ES/PANAS)",
-    "gambar": "public/images/estehtawar.webp"
+    "gambar": "/images/estehtawar.webp"
   },
   {
     "id": 31,
@@ -221,7 +221,7 @@
     "kategori": "Kwetiaw",
     "harga": 25000,
     "deskripsi": "Kwetiaw goreng dengan telur",
-    "gambar": "public/images/KWGTELUR.jpg"
+    "gambar": "/images/KWGTELUR.jpg"
   },
   {
     "id": 32,
@@ -229,7 +229,7 @@
     "kategori": "Kwetiaw",
     "harga": 28000,
     "deskripsi": "Kwetiaw goreng ati ampela",
-    "gambar": "public/images/KWGATIM.jpg"
+    "gambar": "/images/KWGATIM.jpg"
   },
   {
     "id": 33,
@@ -237,7 +237,7 @@
     "kategori": "Kwetiaw",
     "harga": 30000,
     "deskripsi": "Kwetiaw goreng ayam",
-    "gambar": "public/images/KWGYM.jpg"
+    "gambar": "/images/KWGYM.jpg"
   },
   {
     "id": 34,
@@ -245,7 +245,7 @@
     "kategori": "Kwetiaw",
     "harga": 35000,
     "deskripsi": "Kwetiaw goreng seafood",
-    "gambar": "public/images/KWGSFD.jpg"
+    "gambar": "/images/KWGSFD.jpg"
   },
   {
     "id": 35,
@@ -253,7 +253,7 @@
     "kategori": "Kwetiaw",
     "harga": 38000,
     "deskripsi": "Kwetiaw goreng sapi",
-    "gambar": "public/images/KWGSAPI.jpg"
+    "gambar": "/images/KWGSAPI.jpg"
   },
   {
     "id": 36,
@@ -261,7 +261,7 @@
     "kategori": "Kwetiaw",
     "harga": 38000,
     "deskripsi": "Kwetiaw goreng gila",
-    "gambar": "public/images/KWGILA.jpg"
+    "gambar": "/images/KWGILA.jpg"
   },
   {
     "id": 37,
@@ -269,7 +269,7 @@
     "kategori": "Kwetiaw",
     "harga": 40000,
     "deskripsi": "Kwetiaw goreng spesial Warunk Milenial",
-    "gambar": "public/images/KWGSPESIAL.jpg"
+    "gambar": "/images/KWGSPESIAL.jpg"
   },
   {
     "id": 38,
@@ -277,7 +277,7 @@
     "kategori": "Kwetiaw",
     "harga": 30000,
     "deskripsi": "Kwetiaw siram ayam",
-    "gambar": "public/images/KWSYAM.webp"
+    "gambar": "/images/KWSYAM.webp"
   },
   {
     "id": 39,
@@ -285,7 +285,7 @@
     "kategori": "Kwetiaw",
     "harga": 35000,
     "deskripsi": "Kwetiaw siram seafood",
-    "gambar": "public/images/KWSSFD.jpg"
+    "gambar": "/images/KWSSFD.jpg"
   },
   {
     "id": 40,
@@ -293,7 +293,7 @@
     "kategori": "Kwetiaw",
     "harga": 35000,
     "deskripsi": "Kwetiaw siram sapi",
-    "gambar": "public/images/KWSSAPI.jpg"
+    "gambar": "/images/KWSSAPI.jpg"
   },
   {
     "id": 41,
@@ -301,7 +301,7 @@
     "kategori": "Kwetiaw",
     "harga": 30000,
     "deskripsi": "Kwetiaw kuah ayam",
-    "gambar": "public/images/KWHYAM.jpg"
+    "gambar": "/images/KWHYAM.jpg"
   },
   {
     "id": 42,
@@ -309,7 +309,7 @@
     "kategori": "Kwetiaw",
     "harga": 30000,
     "deskripsi": "Kwetiaw kuah seafood",
-    "gambar": "public/images/KWHSFD.jpg"
+    "gambar": "/images/KWHSFD.jpg"
   },
   {
     "id": 43,
@@ -317,7 +317,7 @@
     "kategori": "Kwetiaw",
     "harga": 35000,
     "deskripsi": "Kwetiaw kuah sapi",
-    "gambar": "public/images/KWHSAPI.jpg"
+    "gambar": "/images/KWHSAPI.jpg"
   },
   {
     "id": 44,
@@ -325,7 +325,7 @@
     "kategori": "Grill",
     "harga": 55000,
     "deskripsi": "Iga goreng penyet",
-    "gambar": "public/images/igagrg.jpg"
+    "gambar": "/images/igagrg.jpg"
   },
   {
     "id": 45,
@@ -333,7 +333,7 @@
     "kategori": "Grill",
     "harga": 60000,
     "deskripsi": "Iga bakar",
-    "gambar": "public/images/igabakr.webp"
+    "gambar": "/images/igabakr.webp"
   },
   {
     "id": 46,
@@ -341,7 +341,7 @@
     "kategori": "Grill",
     "harga": 65000,
     "deskripsi": "Iga bakar dengan mozarella",
-    "gambar": "public/images/igamoza.webp"
+    "gambar": "/images/igamoza.webp"
   },
   {
     "id": 47,
@@ -349,7 +349,7 @@
     "kategori": "Grill",
     "harga": 70000,
     "deskripsi": "Buntut bakar",
-    "gambar": "public/images/buntutbkr.webp"
+    "gambar": "/images/buntutbkr.webp"
   },
   {
     "id": 48,
@@ -357,7 +357,7 @@
     "kategori": "Grill",
     "harga": 85000,
     "deskripsi": "Buntut bakar double",
-    "gambar": "public/images/buntutdbl.webp"
+    "gambar": "/images/buntutdbl.webp"
   },
   {
     "id": 49,
@@ -365,7 +365,7 @@
     "kategori": "Vegetables",
     "harga": 25000,
     "deskripsi": "Capcay ayam",
-    "gambar": "public/images/capcayayam.webp"
+    "gambar": "/images/capcayayam.webp"
   },
   {
     "id": 50,
@@ -373,7 +373,7 @@
     "kategori": "Vegetables",
     "harga": 28000,
     "deskripsi": "Capcay seafood",
-    "gambar": "public/images/capcaysfd.webp"
+    "gambar": "/images/capcaysfd.webp"
   },
   {
     "id": 51,
@@ -381,7 +381,7 @@
     "kategori": "Vegetables",
     "harga": 35000,
     "deskripsi": "Capcay sapi",
-    "gambar": "public/images/capcaysapi.webp"
+    "gambar": "/images/capcaysapi.webp"
   },
   {
     "id": 52,
@@ -389,7 +389,7 @@
     "kategori": "Vegetables",
     "harga": 40000,
     "deskripsi": "Capcay spesial",
-    "gambar": "public/images/capcayspesial.webp"
+    "gambar": "/images/capcayspesial.webp"
   },
   {
     "id": 53,
@@ -397,7 +397,7 @@
     "kategori": "Soup",
     "harga": 43000,
     "deskripsi": "Tomyam ayam",
-    "gambar": "public/images/tomyam-ayam.webp"
+    "gambar": "/images/tomyam-ayam.webp"
   },
   {
     "id": 54,
@@ -405,7 +405,7 @@
     "kategori": "Soup",
     "harga": 45000,
     "deskripsi": "Tomyam seafood",
-    "gambar": "public/images/tomyam-sfd.webp"
+    "gambar": "/images/tomyam-sfd.webp"
   },
   {
     "id": 55,
@@ -413,7 +413,7 @@
     "kategori": "Soup",
     "harga": 50000,
     "deskripsi": "Tomyam sapi",
-    "gambar": "public/images/tomyam-sapi.webp"
+    "gambar": "/images/tomyam-sapi.webp"
   },
   {
     "id": 56,
@@ -421,7 +421,7 @@
     "kategori": "Rice Bowl",
     "harga": 35000,
     "deskripsi": "Rice bowl ayam rica-rica",
-    "gambar": "public/images/rbayamrica.jpeg"
+    "gambar": "/images/rbayamrica.jpeg"
   },
   {
     "id": 57,
@@ -429,7 +429,7 @@
     "kategori": "Rice Bowl",
     "harga": 35000,
     "deskripsi": "Rice bowl ayam lada hitam",
-    "gambar": "public/images/rbayamlada.webp"
+    "gambar": "/images/rbayamlada.webp"
   },
   {
     "id": 58,
@@ -437,7 +437,7 @@
     "kategori": "Rice Bowl",
     "harga": 35000,
     "deskripsi": "Rice bowl udang rica-rica",
-    "gambar": "public/images/rbudangrica.webp"
+    "gambar": "/images/rbudangrica.webp"
   },
   {
     "id": 59,
@@ -445,7 +445,7 @@
     "kategori": "Rice Bowl",
     "harga": 35000,
     "deskripsi": "Rice bowl cumi lada hitam",
-    "gambar": "public/images/rbcumilada.webp"
+    "gambar": "/images/rbcumilada.webp"
   },
   {
     "id": 60,
@@ -453,7 +453,7 @@
     "kategori": "Steak",
     "harga": 40000,
     "deskripsi": "Chicken steak",
-    "gambar": "public/images/ayamsteak.jpg"
+    "gambar": "/images/ayamsteak.jpg"
   },
   {
     "id": 61,
@@ -461,7 +461,7 @@
     "kategori": "Steak",
     "harga": 45000,
     "deskripsi": "Crispy chicken steak",
-    "gambar": "public/images/chichkensteak.jpeg"
+    "gambar": "/images/chichkensteak.jpeg"
   },
   {
     "id": 62,
@@ -469,7 +469,7 @@
     "kategori": "Steak",
     "harga": 70000,
     "deskripsi": "Beef steak",
-    "gambar": "public/images/beefsteak.webp"
+    "gambar": "/images/beefsteak.webp"
   },
   {
     "id": 63,
@@ -477,7 +477,7 @@
     "kategori": "Ramen",
     "harga": 30000,
     "deskripsi": "Ramen ayam",
-    "gambar": "public/images/ramenayam.webp"
+    "gambar": "/images/ramenayam.webp"
   },
   {
     "id": 64,
@@ -485,7 +485,7 @@
     "kategori": "Ramen",
     "harga": 28000,
     "deskripsi": "Ramen ati ampela",
-    "gambar": "public/images/ramenati.webp"
+    "gambar": "/images/ramenati.webp"
   },
   {
     "id": 65,
@@ -493,7 +493,7 @@
     "kategori": "Ramen",
     "harga": 35000,
     "deskripsi": "Ramen seafood",
-    "gambar": "public/images/ramensfd.webp"
+    "gambar": "/images/ramensfd.webp"
   },
   {
     "id": 66,
@@ -501,7 +501,7 @@
     "kategori": "Ramen",
     "harga": 35000,
     "deskripsi": "Ramen sapi",
-    "gambar": "public/images/ramensapi.webp"
+    "gambar": "/images/ramensapi.webp"
   },
   {
     "id": 67,
@@ -509,7 +509,7 @@
     "kategori": "Ramen",
     "harga": 37000,
     "deskripsi": "Ramen spesial",
-    "gambar": "public/images/ramenspesial.webp"
+    "gambar": "/images/ramenspesial.webp"
   },
   {
     "id": 68,
@@ -517,7 +517,7 @@
     "kategori": "Ayam",
     "harga": 20000,
     "deskripsi": "Ayam goreng",
-    "gambar": "public/images/ayamgrg.jpg"
+    "gambar": "/images/ayamgrg.jpg"
   },
   {
     "id": 69,
@@ -525,7 +525,7 @@
     "kategori": "Ayam",
     "harga": 20000,
     "deskripsi": "Ayam bakar",
-    "gambar": "public/images/ayambkr.jpg"
+    "gambar": "/images/ayambkr.jpg"
   },
   {
     "id": 70,
@@ -533,7 +533,7 @@
     "kategori": "Ayam",
     "harga": 23000,
     "deskripsi": "Ayam geprek",
-    "gambar": "public/images/ayamgprk.webp"
+    "gambar": "/images/ayamgprk.webp"
   },
   {
     "id": 71,
@@ -541,7 +541,7 @@
     "kategori": "Ayam",
     "harga": 30000,
     "deskripsi": "Ayam rica-rica",
-    "gambar": "public/images/ayamrica.jpeg"
+    "gambar": "/images/ayamrica.jpeg"
   },
   {
     "id": 72,
@@ -549,7 +549,7 @@
     "kategori": "Ayam",
     "harga": 30000,
     "deskripsi": "Ayam saus asam manis",
-    "gambar": "public/images/ayamasam.jpg"
+    "gambar": "/images/ayamasam.jpg"
   },
   {
     "id": 73,
@@ -557,7 +557,7 @@
     "kategori": "Ayam",
     "harga": 30000,
     "deskripsi": "Ayam lada hitam",
-    "gambar": "public/images/ayamlh.webp"
+    "gambar": "/images/ayamlh.webp"
   },
   {
     "id": 74,
@@ -565,7 +565,7 @@
     "kategori": "Bebek",
     "harga": 40000,
     "deskripsi": "Bebek goreng",
-    "gambar": "public/images/bebekgrg.jpg"
+    "gambar": "/images/bebekgrg.jpg"
   },
   {
     "id": 75,
@@ -573,7 +573,7 @@
     "kategori": "Bebek",
     "harga": 40000,
     "deskripsi": "Bebek bakar",
-    "gambar": "public/images/bebekbkr.jpg"
+    "gambar": "/images/bebekbkr.jpg"
   },
   {
     "id": 76,
@@ -581,7 +581,7 @@
     "kategori": "Bebek",
     "harga": 40000,
     "deskripsi": "Bebek rica-rica",
-    "gambar": "public/images/bebekrica.png"
+    "gambar": "/images/bebekrica.png"
   },
   {
     "id": 77,
@@ -589,7 +589,7 @@
     "kategori": "Bebek",
     "harga": 40000,
     "deskripsi": "Bebek lada hitam",
-    "gambar": "public/images/bebeklda.webp"
+    "gambar": "/images/bebeklda.webp"
   },
   {
     "id": 78,
@@ -597,7 +597,7 @@
     "kategori": "Bebek",
     "harga": 45000,
     "deskripsi": "Bebek kremes",
-    "gambar": "public/images/bebekkrems.webp"
+    "gambar": "/images/bebekkrems.webp"
   },
   {
     "id": 79,
@@ -605,7 +605,7 @@
     "kategori": "Bebek",
     "harga": 45000,
     "deskripsi": "Bebek bakar lada hitam",
-    "gambar": "public/images/bebekbkrlda.webp"
+    "gambar": "/images/bebekbkrlda.webp"
   },
   {
     "id": 80,
@@ -613,7 +613,7 @@
     "kategori": "Bebek",
     "harga": 50000,
     "deskripsi": "Bebek dengan sambal gledek",
-    "gambar": "public/images/bebekgledek.webp"
+    "gambar": "/images/bebekgledek.webp"
   },
   {
     "id": 81,
@@ -621,7 +621,7 @@
     "kategori": "Ayam Kampung",
     "harga": 40000,
     "deskripsi": "Ayam kampung gepuk",
-    "gambar": "public/images/ayamkampgepuk.jpg"
+    "gambar": "/images/ayamkampgepuk.jpg"
   },
   {
     "id": 82,
@@ -629,7 +629,7 @@
     "kategori": "Ayam Kampung",
     "harga": 40000,
     "deskripsi": "Ayam kampung kremes",
-    "gambar": "public/images/ayamkampkreme.jpg"
+    "gambar": "/images/ayamkampkreme.jpg"
   },
   {
     "id": 83,
@@ -637,7 +637,7 @@
     "kategori": "Ayam Kampung",
     "harga": 45000,
     "deskripsi": "Ayam kampung bakar",
-    "gambar": "public/images/ayamkampbakr.webp"
+    "gambar": "/images/ayamkampbakr.webp"
   },
   {
     "id": 84,
@@ -645,7 +645,7 @@
     "kategori": "Ayam Kampung",
     "harga": 50000,
     "deskripsi": "Ayam kampung bakar lada hitam",
-    "gambar": "public/images/ayamkampbkrlada.jpg"
+    "gambar": "/images/ayamkampbkrlada.jpg"
   },
   {
     "id": 85,
@@ -653,7 +653,7 @@
     "kategori": "Ayam Kampung",
     "harga": 50000,
     "deskripsi": "Ayam kampung rica-rica",
-    "gambar": "public/images/ayamkamprica.jpg"
+    "gambar": "/images/ayamkamprica.jpg"
   },
   {
     "id": 86,
@@ -661,7 +661,7 @@
     "kategori": "Ayam Kampung",
     "harga": 45000,
     "deskripsi": "Ayam kampung lada hitam",
-    "gambar": "public/images/ayamkamplada.jpg"
+    "gambar": "/images/ayamkamplada.jpg"
   },
   {
     "id": 87,
@@ -669,7 +669,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Cumi rica-rica",
-    "gambar": "public/images/cumirica.webp"
+    "gambar": "/images/cumirica.webp"
   },
   {
     "id": 88,
@@ -677,7 +677,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Cumi saus asam manis",
-    "gambar": "public/images/cumiasammanis.webp"
+    "gambar": "/images/cumiasammanis.webp"
   },
   {
     "id": 89,
@@ -685,7 +685,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Cumi lada hitam",
-    "gambar": "public/images/cumilada.webp"
+    "gambar": "/images/cumilada.webp"
   },
   {
     "id": 90,
@@ -693,7 +693,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Cumi saus telur asin",
-    "gambar": "public/images/cumitasin.webp"
+    "gambar": "/images/cumitasin.webp"
   },
   {
     "id": 91,
@@ -701,7 +701,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Cumi sambal pete",
-    "gambar": "public/images/cumipete.webp"
+    "gambar": "/images/cumipete.webp"
   },
   {
     "id": 92,
@@ -709,7 +709,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Udang rica-rica",
-    "gambar": "public/images/udangrica.webp"
+    "gambar": "/images/udangrica.webp"
   },
   {
     "id": 93,
@@ -717,7 +717,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Udang saus asam manis",
-    "gambar": "public/images/udangasam.webp"
+    "gambar": "/images/udangasam.webp"
   },
   {
     "id": 94,
@@ -725,7 +725,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Udang lada hitam",
-    "gambar": "public/images/udanglh.webp"
+    "gambar": "/images/udanglh.webp"
   },
   {
     "id": 95,
@@ -733,7 +733,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Udang saus telur asin",
-    "gambar": "public/images/udangtasin.webp"
+    "gambar": "/images/udangtasin.webp"
   },
   {
     "id": 96,
@@ -741,7 +741,7 @@
     "kategori": "Seafood",
     "harga": 30000,
     "deskripsi": "Udang sambal pete",
-    "gambar": "public/images/udangpet.webp"
+    "gambar": "/images/udangpet.webp"
   },
   {
     "id": 97,
@@ -749,7 +749,7 @@
     "kategori": "Menu Baru",
     "harga": 30000,
     "deskripsi": "Oseng daging",
-    "gambar": "public/images/osengdaging.webp"
+    "gambar": "/images/osengdaging.webp"
   },
   {
     "id": 98,
@@ -757,7 +757,7 @@
     "kategori": "Menu Baru",
     "harga": 55000,
     "deskripsi": "Oseng iga",
-    "gambar": "public/images/osengiga.webp"
+    "gambar": "/images/osengiga.webp"
   },
   {
     "id": 99,
@@ -765,7 +765,7 @@
     "kategori": "Menu Baru",
     "harga": 15000,
     "deskripsi": "Telur barendo",
-    "gambar": "public/images/telurbaren.jpeg"
+    "gambar": "/images/telurbaren.jpeg"
   },
   {
     "id": 100,
@@ -773,7 +773,7 @@
     "kategori": "Menu Baru",
     "harga": 15000,
     "deskripsi": "Terong penyet",
-    "gambar": "public/images/terongpenyet.jpg"
+    "gambar": "/images/terongpenyet.jpg"
   },
   {
     "id": 101,
@@ -781,7 +781,7 @@
     "kategori": "Menu Baru",
     "harga": 20000,
     "deskripsi": "Terong crispy",
-    "gambar": "public/images/terongkirsp.webp"
+    "gambar": "/images/terongkirsp.webp"
   },
   {
     "id": 102,
@@ -789,7 +789,7 @@
     "kategori": "Kikil",
     "harga": 20000,
     "deskripsi": "Kikil penyet",
-    "gambar": "public/images/kikilpenyet.webp"
+    "gambar": "/images/kikilpenyet.webp"
   },
   {
     "id": 103,
@@ -797,7 +797,7 @@
     "kategori": "Kikil",
     "harga": 25000,
     "deskripsi": "Oseng kikil",
-    "gambar": "public/images/osengkikil.webp"
+    "gambar": "/images/osengkikil.webp"
   },
   {
     "id": 104,
@@ -805,7 +805,7 @@
     "kategori": "Kikil",
     "harga": 27000,
     "deskripsi": "Kikil sambal pete",
-    "gambar": "public/images/kikilpete.webp"
+    "gambar": "/images/kikilpete.webp"
   },
   {
     "id": 105,
@@ -813,7 +813,7 @@
     "kategori": "Sop",
     "harga": 30000,
     "deskripsi": "Sop ayam",
-    "gambar": "public/images/sopayam.jpeg"
+    "gambar": "/images/sopayam.jpeg"
   },
   {
     "id": 106,
@@ -821,7 +821,7 @@
     "kategori": "Sop",
     "harga": 40000,
     "deskripsi": "Sop daging",
-    "gambar": "public/images/sopdaging.webp"
+    "gambar": "/images/sopdaging.webp"
   },
   {
     "id": 107,
@@ -829,7 +829,7 @@
     "kategori": "Sop",
     "harga": 65000,
     "deskripsi": "Sop iga sapi",
-    "gambar": "public/images/sopiga.webp"
+    "gambar": "/images/sopiga.webp"
   },
   {
     "id": 108,
@@ -837,7 +837,7 @@
     "kategori": "Sop",
     "harga": 70000,
     "deskripsi": "Sop buntut",
-    "gambar": "public/images/sopbuntut.webp"
+    "gambar": "/images/sopbuntut.webp"
   },
   {
     "id": 109,
@@ -845,7 +845,7 @@
     "kategori": "Soto",
     "harga": 30000,
     "deskripsi": "Soto madura",
-    "gambar": "public/images/soto-madura.jpg"
+    "gambar": "/images/soto-madura.jpg"
   },
   {
     "id": 110,
@@ -853,7 +853,7 @@
     "kategori": "Soto",
     "harga": 35000,
     "deskripsi": "Soto betawi",
-    "gambar": "public/images/soto-betawi.jpeg"
+    "gambar": "/images/soto-betawi.jpeg"
   },
   {
     "id": 111,
@@ -861,7 +861,7 @@
     "kategori": "Tongseng",
     "harga": 30000,
     "deskripsi": "Tongseng ayam",
-    "gambar": "public/images/tongayam.jpeg"
+    "gambar": "/images/tongayam.jpeg"
   },
   {
     "id": 112,
@@ -869,7 +869,7 @@
     "kategori": "Tongseng",
     "harga": 35000,
     "deskripsi": "Tongseng sapi",
-    "gambar": "public/images/tongsapi.jpg"
+    "gambar": "/images/tongsapi.jpg"
   },
   {
     "id": 113,
@@ -877,7 +877,7 @@
     "kategori": "Snack",
     "harga": 18000,
     "deskripsi": "Cireng",
-    "gambar": "public/images/cireng.webp"
+    "gambar": "/images/cireng.webp"
   },
   {
     "id": 114,
@@ -885,7 +885,7 @@
     "kategori": "Snack",
     "harga": 18000,
     "deskripsi": "Tempe mendoan",
-    "gambar": "public/images/mendoan.jpg"
+    "gambar": "/images/mendoan.jpg"
   },
   {
     "id": 115,
@@ -893,7 +893,7 @@
     "kategori": "Snack",
     "harga": 18000,
     "deskripsi": "Martabak tahu telur",
-    "gambar": "public/images/martabaktahu.webp"
+    "gambar": "/images/martabaktahu.webp"
   },
   {
     "id": 116,
@@ -901,7 +901,7 @@
     "kategori": "Snack",
     "harga": 20000,
     "deskripsi": "Tahu jerit",
-    "gambar": "public/images/tahujer.webp"
+    "gambar": "/images/tahujer.webp"
   },
   {
     "id": 117,
@@ -909,7 +909,7 @@
     "kategori": "Snack",
     "harga": 20000,
     "deskripsi": "Tahu bakso goreng",
-    "gambar": "public/images/tahubakso.jpeg"
+    "gambar": "/images/tahubakso.jpeg"
   },
   {
     "id": 118,
@@ -917,7 +917,7 @@
     "kategori": "Snack",
     "harga": 22000,
     "deskripsi": "Tahu bakso rebus",
-    "gambar": "public/images/tahubaksoreb.jpg"
+    "gambar": "/images/tahubaksoreb.jpg"
   },
   {
     "id": 119,
@@ -925,7 +925,7 @@
     "kategori": "Snack",
     "harga": 25000,
     "deskripsi": "Bola kentang keju",
-    "gambar": "public/images/potato.jpg"
+    "gambar": "/images/potato.jpg"
   },
   {
     "id": 120,
@@ -933,7 +933,7 @@
     "kategori": "Snack",
     "harga": 23000,
     "deskripsi": "Kentang goreng bumbu balado",
-    "gambar": "public/images/kentangbalado.jpg"
+    "gambar": "/images/kentangbalado.jpg"
   },
   {
     "id": 121,
@@ -941,7 +941,7 @@
     "kategori": "Snack",
     "harga": 20000,
     "deskripsi": "Kentang goreng original",
-    "gambar": "public/images/kentang.jpg"
+    "gambar": "/images/kentang.jpg"
   },
   {
     "id": 122,
@@ -949,7 +949,7 @@
     "kategori": "Snack",
     "harga": 20000,
     "deskripsi": "Singkong goreng balado",
-    "gambar": "public/images/singkongbalad.jpeg"
+    "gambar": "/images/singkongbalad.jpeg"
   },
   {
     "id": 123,
@@ -957,7 +957,7 @@
     "kategori": "Snack",
     "harga": 18000,
     "deskripsi": "Singkong goreng original",
-    "gambar": "public/images/singkongori.webp"
+    "gambar": "/images/singkongori.webp"
   },
   {
     "id": 124,
@@ -965,7 +965,7 @@
     "kategori": "Snack",
     "harga": 25000,
     "deskripsi": "Sosis goreng",
-    "gambar": "public/images/sosisgrg.webp"
+    "gambar": "/images/sosisgrg.webp"
   },
   {
     "id": 125,
@@ -973,7 +973,7 @@
     "kategori": "Snack",
     "harga": 25000,
     "deskripsi": "Sosis bakar",
-    "gambar": "public/images/sosisbkr.webp"
+    "gambar": "/images/sosisbkr.webp"
   },
   {
     "id": 126,
@@ -981,7 +981,7 @@
     "kategori": "Snack",
     "harga": 25000,
     "deskripsi": "Lumpia isi ayam",
-    "gambar": "public/images/lumpiaayam.jpg"
+    "gambar": "/images/lumpiaayam.jpg"
   },
   {
     "id": 127,
@@ -989,7 +989,7 @@
     "kategori": "Snack",
     "harga": 20000,
     "deskripsi": "Lumpia isi tapai",
-    "gambar": "public/images/lumpiatape.jpeg"
+    "gambar": "/images/lumpiatape.jpeg"
   },
   {
     "id": 128,
@@ -997,7 +997,7 @@
     "kategori": "Indomie",
     "harga": 18000,
     "deskripsi": "Indomie goreng dengan telur",
-    "gambar": "public/images/indomietelur.jpeg"
+    "gambar": "/images/indomietelur.jpeg"
   },
   {
     "id": 129,
@@ -1005,7 +1005,7 @@
     "kategori": "Indomie",
     "harga": 25000,
     "deskripsi": "Indomie goreng dengan ayam",
-    "gambar": "public/images/indomietelur.jpeg"
+    "gambar": "/images/indomietelur.jpeg"
   },
   {
     "id": 130,
@@ -1013,7 +1013,7 @@
     "kategori": "Indomie",
     "harga": 20000,
     "deskripsi": "Indomie goreng dengan ati ampela",
-    "gambar": "public/images/indomietelur.jpeg"
+    "gambar": "/images/indomietelur.jpeg"
   },
   {
     "id": 131,
@@ -1021,7 +1021,7 @@
     "kategori": "Indomie",
     "harga": 28000,
     "deskripsi": "Indomie goreng spesial Warunk Milenial",
-    "gambar": "public/images/indomiespesial.png"
+    "gambar": "/images/indomiespesial.png"
   },
   {
     "id": 132,
@@ -1029,7 +1029,7 @@
     "kategori": "Indomie",
     "harga": 18000,
     "deskripsi": "Indomie rebus dengan telur",
-    "gambar": "public/images/indomietelur.jpeg"
+    "gambar": "/images/indomietelur.jpeg"
   },
   {
     "id": 133,
@@ -1037,7 +1037,7 @@
     "kategori": "Indomie",
     "harga": 25000,
     "deskripsi": "Indomie rebus dengan ayam",
-    "gambar": "public/images/indomietelur.jpeg"
+    "gambar": "/images/indomietelur.jpeg"
   },
   {
     "id": 134,
@@ -1045,7 +1045,7 @@
     "kategori": "Indomie",
     "harga": 20000,
     "deskripsi": "Indomie rebus dengan ati ampela",
-    "gambar": "public/images/indomietelur.jpeg"
+    "gambar": "/images/indomietelur.jpeg"
   },
   {
     "id": 135,
@@ -1053,7 +1053,7 @@
     "kategori": "Indomie",
     "harga": 28000,
     "deskripsi": "Indomie rebus spesial Warunk Milenial",
-    "gambar": "public/images/indomiespesial.png"
+    "gambar": "/images/indomiespesial.png"
   },
   {
     "id": 136,
@@ -1061,7 +1061,7 @@
     "kategori": "Roti Bakar",
     "harga": 28000,
     "deskripsi": "Roti bakar topping Ice Cream Coklat",
-    "gambar": "public/images/rotiicecho.png"
+    "gambar": "/images/rotiicecho.png"
   },
   {
     "id": 137,
@@ -1069,7 +1069,7 @@
     "kategori": "Roti Bakar",
     "harga": 23000,
     "deskripsi": "Roti bakar topping keju",
-    "gambar": "public/images/rotibakarkeju.webp"
+    "gambar": "/images/rotibakarkeju.webp"
   },
   {
     "id": 138,
@@ -1077,7 +1077,7 @@
     "kategori": "Roti Bakar",
     "harga": 23000,
     "deskripsi": "Roti bakar topping coklat",
-    "gambar": "public/images/rotibakarcoklt.webp"
+    "gambar": "/images/rotibakarcoklt.webp"
   },
   {
     "id": 139,
@@ -1085,7 +1085,7 @@
     "kategori": "Roti Bakar",
     "harga": 25000,
     "deskripsi": "Roti bakar topping coklat dan keju",
-    "gambar": "public/images/rotibakarcokkeju.jpg"
+    "gambar": "/images/rotibakarcokkeju.jpg"
   },
   {
     "id": 140,
@@ -1093,7 +1093,7 @@
     "kategori": "Pisang",
     "harga": 18000,
     "deskripsi": "Pisang goreng original",
-    "gambar": "public/images/pisanggrg.jpeg"
+    "gambar": "/images/pisanggrg.jpeg"
   },
   {
     "id": 141,
@@ -1101,7 +1101,7 @@
     "kategori": "Pisang",
     "harga": 23000,
     "deskripsi": "Pisang goreng topping keju",
-    "gambar": "public/images/pisangkeju.png"
+    "gambar": "/images/pisangkeju.png"
   },
   {
     "id": 142,
@@ -1109,7 +1109,7 @@
     "kategori": "Pisang",
     "harga": 23000,
     "deskripsi": "Pisang goreng topping coklat",
-    "gambar": "public/images/pisangcoklat.webp"
+    "gambar": "/images/pisangcoklat.webp"
   },
   {
     "id": 143,
@@ -1117,7 +1117,7 @@
     "kategori": "Pisang",
     "harga": 25000,
     "deskripsi": "Pisang goreng topping coklat keju",
-    "gambar": "public/images/pisangcoklatkeju.jpg"
+    "gambar": "/images/pisangcoklatkeju.jpg"
   },
   {
     "id": 144,
@@ -1125,7 +1125,7 @@
     "kategori": "Pisang",
     "harga": 23000,
     "deskripsi": "Pisang bakar topping keju",
-    "gambar": "public/images/pisbakkeju.webp"
+    "gambar": "/images/pisbakkeju.webp"
   },
   {
     "id": 145,
@@ -1133,7 +1133,7 @@
     "kategori": "Pisang",
     "harga": 23000,
     "deskripsi": "Pisang bakar topping coklat",
-    "gambar": "public/images/pisbakcoklat.webp"
+    "gambar": "/images/pisbakcoklat.webp"
   },
   {
     "id": 146,
@@ -1141,7 +1141,7 @@
     "kategori": "Pisang",
     "harga": 25000,
     "deskripsi": "Pisang bakar topping coklat keju",
-    "gambar": "public/images/pisbakcokju.webp"
+    "gambar": "/images/pisbakcokju.webp"
   },
   {
     "id": 147,
@@ -1149,7 +1149,7 @@
     "kategori": "Pasta",
     "harga": 28000,
     "deskripsi": "Spaghetti saus carbonara",
-    "gambar": "public/images/spageticarbo.jpeg"
+    "gambar": "/images/spageticarbo.jpeg"
   },
   {
     "id": 148,
@@ -1157,7 +1157,7 @@
     "kategori": "Pasta",
     "harga": 30000,
     "deskripsi": "Spaghetti saus bolognese",
-    "gambar": "public/images/spagetibolog.png"
+    "gambar": "/images/spagetibolog.png"
   },
   {
     "id": 149,
@@ -1165,7 +1165,7 @@
     "kategori": "Minuman",
     "harga": 25000,
     "deskripsi": "Minuman alpukat kocok",
-    "gambar": "public/images/alpukatkocok.jpg"
+    "gambar": "/images/alpukatkocok.jpg"
   },
   {
     "id": 155,
@@ -1173,7 +1173,7 @@
     "kategori": "Minuman",
     "harga": 23000,
     "deskripsi": "Kelapa muda dengan susu",
-    "gambar": "public/images/esdegansusu.jpg"
+    "gambar": "/images/esdegansusu.jpg"
   },
   {
     "id": 156,
@@ -1181,7 +1181,7 @@
     "kategori": "Mie",
     "harga": 38000,
     "deskripsi": "Bakmie Jowo daging sapi",
-    "gambar": "public/images/MIGSAPI.webp"
+    "gambar": "/images/MIGSAPI.webp"
   },
   {
     "id": 157,
@@ -1189,7 +1189,7 @@
     "kategori": "Coffee",
     "harga": 16000,
     "deskripsi": "Americano dingin",
-    "gambar": "public/images/americanoice.jpg"
+    "gambar": "/images/americanoice.jpg"
   },
   {
     "id": 158,
@@ -1197,7 +1197,7 @@
     "kategori": "Coffee",
     "harga": 14000,
     "deskripsi": "Long black panas",
-    "gambar": "public/images/longblack.webp"
+    "gambar": "/images/longblack.webp"
   },
   {
     "id": 159,
@@ -1205,7 +1205,7 @@
     "kategori": "Coffee",
     "harga": 16000,
     "deskripsi": "Long black dingin",
-    "gambar": "public/images/longblack.webp"
+    "gambar": "/images/longblack.webp"
   },
   {
     "id": 162,
@@ -1213,7 +1213,7 @@
     "kategori": "Coffee",
     "harga": 23000,
     "deskripsi": "Vanilla latte panas",
-    "gambar": "public/images/vanilalatte.jpg"
+    "gambar": "/images/vanilalatte.jpg"
   },
   {
     "id": 163,
@@ -1221,7 +1221,7 @@
     "kategori": "Coffee",
     "harga": 25000,
     "deskripsi": "Vanilla latte dingin",
-    "gambar": "public/images/vanillalatteice.jpg"
+    "gambar": "/images/vanillalatteice.jpg"
   },
   {
     "id": 164,
@@ -1229,7 +1229,7 @@
     "kategori": "Coffee",
     "harga": 23000,
     "deskripsi": "Caramel latte panas",
-    "gambar": "public/images/caramellatte.jpg"
+    "gambar": "/images/caramellatte.jpg"
   },
   {
     "id": 165,
@@ -1237,7 +1237,7 @@
     "kategori": "Coffee",
     "harga": 25000,
     "deskripsi": "Caramel latte dingin",
-    "gambar": "public/images/caramellatte.jpg"
+    "gambar": "/images/caramellatte.jpg"
   },
   {
     "id": 166,
@@ -1245,7 +1245,7 @@
     "kategori": "Coffee",
     "harga": 23000,
     "deskripsi": "Hazelnut latte panas",
-    "gambar": "public/images/hazelnutlatte.png"
+    "gambar": "/images/hazelnutlatte.png"
   },
   {
     "id": 167,
@@ -1253,7 +1253,7 @@
     "kategori": "Coffee",
     "harga": 25000,
     "deskripsi": "Hazelnut latte dingin",
-    "gambar": "public/images/hazelnutlatte.png"
+    "gambar": "/images/hazelnutlatte.png"
   },
   {
     "id": 168,
@@ -1261,7 +1261,7 @@
     "kategori": "Coffee",
     "harga": 23000,
     "deskripsi": "Cappuccino panas",
-    "gambar": "public/images/capucino.webp"
+    "gambar": "/images/capucino.webp"
   },
   {
     "id": 169,
@@ -1269,7 +1269,7 @@
     "kategori": "Coffee",
     "harga": 25000,
     "deskripsi": "Cappuccino dingin",
-    "gambar": "public/images/cappucinoice.webp"
+    "gambar": "/images/cappucinoice.webp"
   },
   {
     "id": 170,
@@ -1277,7 +1277,7 @@
     "kategori": "Coffee",
     "harga": 28000,
     "deskripsi": "Caramel macchiato dingin",
-    "gambar": "public/images/caramelmachiato.png"
+    "gambar": "/images/caramelmachiato.png"
   },
   {
     "id": 171,
@@ -1285,7 +1285,7 @@
     "kategori": "Coffee",
     "harga": 20000,
     "deskripsi": "Kopi susu butter panas",
-    "gambar": "public/images/kopisusubuter.jpg"
+    "gambar": "/images/kopisusubuter.jpg"
   },
   {
     "id": 173,
@@ -1293,7 +1293,7 @@
     "kategori": "Coffee",
     "harga": 26000,
     "deskripsi": "Pistachio latte panas",
-    "gambar": "public/images/pistacio.png"
+    "gambar": "/images/pistacio.png"
   },
   {
     "id": 174,
@@ -1301,7 +1301,7 @@
     "kategori": "Coffee",
     "harga": 28000,
     "deskripsi": "Pistachio latte dingin",
-    "gambar": "public/images/pistacio.png"
+    "gambar": "/images/pistacio.png"
   },
   {
     "id": 175,
@@ -1309,7 +1309,7 @@
     "kategori": "Coffee",
     "harga": 26000,
     "deskripsi": "Pandan latte panas",
-    "gambar": "public/images/pandanlatte.jpg"
+    "gambar": "/images/pandanlatte.jpg"
   },
   {
     "id": 176,
@@ -1317,7 +1317,7 @@
     "kategori": "Coffee",
     "harga": 28000,
     "deskripsi": "Pandan latte dingin",
-    "gambar": "public/images/pandanlatte.jpg"
+    "gambar": "/images/pandanlatte.jpg"
   },
   {
     "id": 177,
@@ -1325,7 +1325,7 @@
     "kategori": "Signature Drink",
     "harga": 20000,
     "deskripsi": "Signature kopi susu milenial",
-    "gambar": "public/images/kopisusumilenial.jpeg"
+    "gambar": "/images/kopisusumilenial.jpeg"
   },
   {
     "id": 178,
@@ -1333,7 +1333,7 @@
     "kategori": "Signature Drink",
     "harga": 23000,
     "deskripsi": "Kopi susu aren",
-    "gambar": "public/images/kopisusuaren.png"
+    "gambar": "/images/kopisusuaren.png"
   },
   {
     "id": 179,
@@ -1341,7 +1341,7 @@
     "kategori": "Signature Drink",
     "harga": 26000,
     "deskripsi": "Minuman coklat butter",
-    "gambar": "public/images/choco butter.webp"
+    "gambar": "/images/choco butter.webp"
   },
   {
     "id": 180,
@@ -1349,7 +1349,7 @@
     "kategori": "Signature Drink",
     "harga": 28000,
     "deskripsi": "Minuman signature salty",
-    "gambar": "public/images/salty.png"
+    "gambar": "/images/salty.png"
   },
   {
     "id": 181,
@@ -1357,7 +1357,7 @@
     "kategori": "Signature Drink",
     "harga": 26000,
     "deskripsi": "Moca mint chocolate",
-    "gambar": "public/images/mocamint.webp"
+    "gambar": "/images/mocamint.webp"
   },
   {
     "id": 182,
@@ -1365,7 +1365,7 @@
     "kategori": "Signature Drink",
     "harga": 26000,
     "deskripsi": "Minuman rasa tiramisu",
-    "gambar": "public/images/tiramisu.jpg"
+    "gambar": "/images/tiramisu.jpg"
   },
   {
     "id": 183,
@@ -1373,7 +1373,7 @@
     "kategori": "Non Coffee",
     "harga": 22000,
     "deskripsi": "Matcha panas",
-    "gambar": "public/images/matcha.jpeg"
+    "gambar": "/images/matcha.jpeg"
   },
   {
     "id": 184,
@@ -1381,7 +1381,7 @@
     "kategori": "Non Coffee",
     "harga": 25000,
     "deskripsi": "Matcha dingin",
-    "gambar": "public/images/matcha.jpeg"
+    "gambar": "/images/matcha.jpeg"
   },
   {
     "id": 185,
@@ -1389,7 +1389,7 @@
     "kategori": "Non Coffee",
     "harga": 22000,
     "deskripsi": "Milo panas",
-    "gambar": "public/images/milo.webp"
+    "gambar": "/images/milo.webp"
   },
   {
     "id": 186,
@@ -1397,7 +1397,7 @@
     "kategori": "Non Coffee",
     "harga": 25000,
     "deskripsi": "Milo dingin",
-    "gambar": "public/images/milo.webp"
+    "gambar": "/images/milo.webp"
   },
   {
     "id": 187,
@@ -1405,7 +1405,7 @@
     "kategori": "Non Coffee",
     "harga": 22000,
     "deskripsi": "Taro panas",
-    "gambar": "public/images/taro.png"
+    "gambar": "/images/taro.png"
   },
   {
     "id": 188,
@@ -1413,7 +1413,7 @@
     "kategori": "Non Coffee",
     "harga": 25000,
     "deskripsi": "Taro dingin",
-    "gambar": "public/images/taro.png"
+    "gambar": "/images/taro.png"
   },
   {
     "id": 189,
@@ -1421,7 +1421,7 @@
     "kategori": "Non Coffee",
     "harga": 22000,
     "deskripsi": "Red velvet panas",
-    "gambar": "public/images/redvelvet.jpg"
+    "gambar": "/images/redvelvet.jpg"
   },
   {
     "id": 190,
@@ -1429,7 +1429,7 @@
     "kategori": "Non Coffee",
     "harga": 25000,
     "deskripsi": "Red velvet dingin",
-    "gambar": "public/images/redvelvet.jpg"
+    "gambar": "/images/redvelvet.jpg"
   },
   {
     "id": 191,
@@ -1437,7 +1437,7 @@
     "kategori": "Tea",
     "harga": 13000,
     "deskripsi": "Teh manis panas",
-    "gambar": "public/images/hottea.jpg"
+    "gambar": "/images/hottea.jpg"
   },
   {
     "id": 192,
@@ -1445,7 +1445,7 @@
     "kategori": "Tea",
     "harga": 15000,
     "deskripsi": "Teh manis dingin",
-    "gambar": "public/images/estehmanis.jpg"
+    "gambar": "/images/estehmanis.jpg"
   },
   {
     "id": 193,
@@ -1453,7 +1453,7 @@
     "kategori": "Tea",
     "harga": 20000,
     "deskripsi": "Lemon tea panas",
-    "gambar": "public/images/lemontea.jpg"
+    "gambar": "/images/lemontea.jpg"
   },
   {
     "id": 194,
@@ -1461,7 +1461,7 @@
     "kategori": "Tea",
     "harga": 23000,
     "deskripsi": "Lemon tea dingin",
-    "gambar": "public/images/lemontea.jpg"
+    "gambar": "/images/lemontea.jpg"
   },
   {
     "id": 195,
@@ -1469,7 +1469,7 @@
     "kategori": "Tea",
     "harga": 25000,
     "deskripsi": "Peach tea dingin",
-    "gambar": "public/images/peachtea.webp"
+    "gambar": "/images/peachtea.webp"
   },
   {
     "id": 196,
@@ -1477,7 +1477,7 @@
     "kategori": "Tea",
     "harga": 25000,
     "deskripsi": "Strawberry tea dingin",
-    "gambar": "public/images/strawberrytea.jpg"
+    "gambar": "/images/strawberrytea.jpg"
   },
   {
     "id": 197,
@@ -1485,7 +1485,7 @@
     "kategori": "Frappe",
     "harga": 28000,
     "deskripsi": "Matcha frappe",
-    "gambar": "public/images/matchafrappe.webp"
+    "gambar": "/images/matchafrappe.webp"
   },
   {
     "id": 198,
@@ -1493,7 +1493,7 @@
     "kategori": "Frappe",
     "harga": 28000,
     "deskripsi": "Chocolate frappe",
-    "gambar": "public/images/chocolatefrappe.webp"
+    "gambar": "/images/chocolatefrappe.webp"
   },
   {
     "id": 199,
@@ -1501,7 +1501,7 @@
     "kategori": "Frappe",
     "harga": 28000,
     "deskripsi": "Vanilla frappe",
-    "gambar": "public/images/vanillafrappe.webp"
+    "gambar": "/images/vanillafrappe.webp"
   },
   {
     "id": 200,
@@ -1509,7 +1509,7 @@
     "kategori": "Frappe",
     "harga": 30000,
     "deskripsi": "Cookies frappe",
-    "gambar": "public/images/cookiesfrappe.webp"
+    "gambar": "/images/cookiesfrappe.webp"
   },
   {
     "id": 201,
@@ -1517,7 +1517,7 @@
     "kategori": "Float",
     "harga": 35000,
     "deskripsi": "Moca float",
-    "gambar": "public/images/mocafloat.jpeg"
+    "gambar": "/images/mocafloat.jpeg"
   },
   {
     "id": 202,
@@ -1525,7 +1525,7 @@
     "kategori": "Float",
     "harga": 35000,
     "deskripsi": "Strawberry float",
-    "gambar": "public/images/strawberryfloat.jpg"
+    "gambar": "/images/strawberryfloat.jpg"
   },
   {
     "id": 203,
@@ -1533,7 +1533,7 @@
     "kategori": "Float",
     "harga": 35000,
     "deskripsi": "Milo delight",
-    "gambar": "public/images/milodelight.webp"
+    "gambar": "/images/milodelight.webp"
   },
   {
     "id": 204,
@@ -1541,7 +1541,7 @@
     "kategori": "Float",
     "harga": 38000,
     "deskripsi": "Banana cream float",
-    "gambar": "public/images/bananacreamfloat.jpg"
+    "gambar": "/images/bananacreamfloat.jpg"
   },
   {
     "id": 205,
@@ -1549,7 +1549,7 @@
     "kategori": "Fruity",
     "harga": 20000,
     "deskripsi": "Jeruk manis",
-    "gambar": "public/images/jerukmanis.webp"
+    "gambar": "/images/jerukmanis.webp"
   },
   {
     "id": 206,
@@ -1557,7 +1557,7 @@
     "kategori": "Fruity",
     "harga": 20000,
     "deskripsi": "Jeruk kunci",
-    "gambar": "public/images/jerukkunci.jpeg"
+    "gambar": "/images/jerukkunci.jpeg"
   },
   {
     "id": 207,
@@ -1565,7 +1565,7 @@
     "kategori": "Fruity",
     "harga": 25000,
     "deskripsi": "Jus alpukat",
-    "gambar": "public/images/JusAlpukat.png"
+    "gambar": "/images/JusAlpukat.png"
   },
   {
     "id": 208,
@@ -1573,7 +1573,7 @@
     "kategori": "Fruity",
     "harga": 25000,
     "deskripsi": "Jus mangga",
-    "gambar": "public/images/jusmangga.png"
+    "gambar": "/images/jusmangga.png"
   },
   {
     "id": 209,
@@ -1581,7 +1581,7 @@
     "kategori": "Fruity",
     "harga": 25000,
     "deskripsi": "Jus buah naga",
-    "gambar": "public/images/jusnaga.jpg"
+    "gambar": "/images/jusnaga.jpg"
   },
   {
     "id": 210,
@@ -1589,7 +1589,7 @@
     "kategori": "Fruity",
     "harga": 25000,
     "deskripsi": "Jus melon",
-    "gambar": "public/images/jusmelon.jpeg"
+    "gambar": "/images/jusmelon.jpeg"
   },
   {
     "id": 211,
@@ -1597,7 +1597,7 @@
     "kategori": "Traditional",
     "harga": 20000,
     "deskripsi": "Minuman jahe tradisional",
-    "gambar": "public/images/wedangjahe.jpg"
+    "gambar": "/images/wedangjahe.jpg"
   },
   {
     "id": 212,
@@ -1605,7 +1605,7 @@
     "kategori": "Kids Series",
     "harga": 23000,
     "deskripsi": "Minuman anak strawberry",
-    "gambar": "public/images/strawberryfrizz.webp"
+    "gambar": "/images/strawberryfrizz.webp"
   },
   {
     "id": 213,
@@ -1613,7 +1613,7 @@
     "kategori": "Kids Series",
     "harga": 23000,
     "deskripsi": "Mango lassi",
-    "gambar": "public/images/mangolesi.webp"
+    "gambar": "/images/mangolesi.webp"
   },
   {
     "id": 214,
@@ -1621,7 +1621,7 @@
     "kategori": "Kids Series",
     "harga": 23000,
     "deskripsi": "White lychee",
-    "gambar": "public/images/whitelecy.webp"
+    "gambar": "/images/whitelecy.webp"
   },
   {
     "id": 215,
@@ -1629,7 +1629,7 @@
     "kategori": "Grill Package",
     "harga": 69000,
     "deskripsi": "Chicken slice, bawang bombay, jamur grill, 2 nasi, 2 es teh",
-    "gambar": "public/images/hokie1.webp"
+    "gambar": "/images/hokie1.webp"
   },
   {
     "id": 216,
@@ -1637,7 +1637,7 @@
     "kategori": "Grill Package",
     "harga": 65000,
     "deskripsi": "Beef slice, bawang bombay, jamur grill, 2 nasi, 2 es teh",
-    "gambar": "public/images/hokie2.webp"
+    "gambar": "/images/hokie2.webp"
   },
   {
     "id": 217,
@@ -1645,7 +1645,7 @@
     "kategori": "Grill Package",
     "harga": 70000,
     "deskripsi": "Sosis, chicken slice, bawang bombay, jamur grill",
-    "gambar": "public/images/hokiemix.webp"
+    "gambar": "/images/hokiemix.webp"
   },
   {
     "id": 218,
@@ -1653,7 +1653,7 @@
     "kategori": "Grill Package",
     "harga": 90000,
     "deskripsi": "Cumi, udang, bawang bombay, jamur grill",
-    "gambar": "public/images/hokiesfd.webp"
+    "gambar": "/images/hokiesfd.webp"
   },
   {
     "id": 219,
@@ -1661,7 +1661,7 @@
     "kategori": "Steamboat",
     "harga": 55000,
     "deskripsi": "Beef, bakso, tofu, mie kering, sayur mix",
-    "gambar": "public/images/steambotbeef.webp"
+    "gambar": "/images/steambotbeef.webp"
   },
   {
     "id": 220,
@@ -1669,7 +1669,7 @@
     "kategori": "Steamboat",
     "harga": 69000,
     "deskripsi": "Chicken, bakso, tofu, mie kering, sayur mix",
-    "gambar": "public/images/steambotchic.webp"
+    "gambar": "/images/steambotchic.webp"
   },
   {
     "id": 221,
@@ -1677,7 +1677,7 @@
     "kategori": "Steamboat",
     "harga": 80000,
     "deskripsi": "Cumi, udang, bakso, tofu, sayur mix",
-    "gambar": "public/images/steambotsfd.webp"
+    "gambar": "/images/steambotsfd.webp"
   },
   {
     "id": 222,
@@ -1685,7 +1685,7 @@
     "kategori": "Steamboat",
     "harga": 90000,
     "deskripsi": "Beef, chicken, cumi, udang, bakso, tofu",
-    "gambar": "public/images/steambotmix.webp"
+    "gambar": "/images/steambotmix.webp"
   },
   {
     "id": 223,
@@ -1693,7 +1693,7 @@
     "kategori": "Mie",
     "harga": 25000,
     "deskripsi": "Bakmie Jowo topping Petai",
-    "gambar": "public/images/MIGPET.jpg"
+    "gambar": "/images/MIGPET.jpg"
   },
   {
     "id": 224,
@@ -1701,7 +1701,7 @@
     "kategori": "Mie",
     "harga": 28000,
     "deskripsi": "Bakmie Jowo topping Ati Ampela",
-    "gambar": "public/images/MIGATI.webp"
+    "gambar": "/images/MIGATI.webp"
   },
   {
     "id": 225,
@@ -1709,7 +1709,7 @@
     "kategori": "Mie",
     "harga": 38000,
     "deskripsi": "Bakmie Jowo Pedas Gila",
-    "gambar": "public/images/MIGPDS.jpg"
+    "gambar": "/images/MIGPDS.jpg"
   },
   {
     "id": 226,
@@ -1717,7 +1717,7 @@
     "kategori": "Bihun",
     "harga": 25000,
     "deskripsi": "Bihun goreng dengan telur",
-    "gambar": "public/images/BIGTELUR.webp"
+    "gambar": "/images/BIGTELUR.webp"
   },
   {
     "id": 227,
@@ -1725,7 +1725,7 @@
     "kategori": "Bihun",
     "harga": 30000,
     "deskripsi": "Bihun goreng toping Ayam Goreng",
-    "gambar": "public/images/BIGYM.jpg"
+    "gambar": "/images/BIGYM.jpg"
   },
   {
     "id": 228,
@@ -1733,7 +1733,7 @@
     "kategori": "Bihun",
     "harga": 28000,
     "deskripsi": "Bihun goreng dengan Ati Ampela",
-    "gambar": "public/images/BIGATI.jpg"
+    "gambar": "/images/BIGATI.jpg"
   },
   {
     "id": 229,
@@ -1741,7 +1741,7 @@
     "kategori": "Bihun",
     "harga": 25000,
     "deskripsi": "Bihun goreng dengan Petai",
-    "gambar": "public/images/BIGPET.jpg"
+    "gambar": "/images/BIGPET.jpg"
   },
   {
     "id": 230,
@@ -1749,7 +1749,7 @@
     "kategori": "Bihun",
     "harga": 35000,
     "deskripsi": "Bihun goreng toping Seafood",
-    "gambar": "public/images/BIGSFD.webp"
+    "gambar": "/images/BIGSFD.webp"
   },
   {
     "id": 231,
@@ -1757,7 +1757,7 @@
     "kategori": "Bihun",
     "harga": 35000,
     "deskripsi": "Bihun goreng toping Daging Sapi",
-    "gambar": "public/images/BIGDGN.jpg"
+    "gambar": "/images/BIGDGN.jpg"
   },
   {
     "id": 232,
@@ -1765,7 +1765,7 @@
     "kategori": "Bihun",
     "harga": 38000,
     "deskripsi": "Bihun goreng Pedas Gila",
-    "gambar": "public/images/BIGILA.webp"
+    "gambar": "/images/BIGILA.webp"
   },
   {
     "id": 233,
@@ -1773,7 +1773,7 @@
     "kategori": "Bihun",
     "harga": 40000,
     "deskripsi": "Bihun goreng Spesial WM",
-    "gambar": "public/images/BIGSPESIAL.jpg"
+    "gambar": "/images/BIGSPESIAL.jpg"
   },
   {
     "id": 234,
@@ -1781,7 +1781,7 @@
     "kategori": "Vegetables",
     "harga": 40000,
     "deskripsi": "Sapo tahu dengan ayam",
-    "gambar": "public/images/sapoayam.webp"
+    "gambar": "/images/sapoayam.webp"
   },
   {
     "id": 235,
@@ -1789,7 +1789,7 @@
     "kategori": "Vegetables",
     "harga": 45000,
     "deskripsi": "Sapo tahu dengan seafood",
-    "gambar": "public/images/saposfd.webp"
+    "gambar": "/images/saposfd.webp"
   },
   {
     "id": 236,
@@ -1797,7 +1797,7 @@
     "kategori": "Vegetables",
     "harga": 47000,
     "deskripsi": "Sapo tahu dengan Daging sapi",
-    "gambar": "public/images/saposapi.webp"
+    "gambar": "/images/saposapi.webp"
   },
   {
     "id": 237,
@@ -1805,7 +1805,7 @@
     "kategori": "Rice Bowl",
     "harga": 35000,
     "deskripsi": "Rice bowl dengan udang saus lada hitam",
-    "gambar": "public/images/rbudanglada.png"
+    "gambar": "/images/rbudanglada.png"
   },
   {
     "id": 238,
@@ -1813,7 +1813,7 @@
     "kategori": "Rice Bowl",
     "harga": 35000,
     "deskripsi": "Rice bowl dengan cumi saus rica",
-    "gambar": "public/images/rbcumirica.webp"
+    "gambar": "/images/rbcumirica.webp"
   },
   {
     "id": 239,
@@ -1821,7 +1821,7 @@
     "kategori": "Rice Bowl",
     "harga": 40000,
     "deskripsi": "Rice bowl dengan daging sapi saus lada hitam",
-    "gambar": "public/images/rbsapilada.webp"
+    "gambar": "/images/rbsapilada.webp"
   },
   {
     "id": 240,
@@ -1829,7 +1829,7 @@
     "kategori": "Rice Bowl",
     "harga": 40000,
     "deskripsi": "Rice bowl dengan Daging sapi saus rica rica",
-    "gambar": "public/images/rbsapirica.webp"
+    "gambar": "/images/rbsapirica.webp"
   },
   {
     "id": 241,
@@ -1837,7 +1837,7 @@
     "kategori": "Grill",
     "harga": 35000,
     "deskripsi": "Rasakan panasnya hotplate dengan ayam goreng tepung, saus spesial, dan sayuran segar",
-    "gambar": "public/images/hotplayam.jpeg"
+    "gambar": "/images/hotplayam.jpeg"
   },
   {
     "id": 242,
@@ -1845,7 +1845,7 @@
     "kategori": "Grill",
     "harga": 38000,
     "deskripsi": "Rasakan panasnya hotplate dengan udang goreng tepung, saus spesial, dan sayuran segar",
-    "gambar": "public/images/hotplaudang.webp"
+    "gambar": "/images/hotplaudang.webp"
   },
   {
     "id": 243,
@@ -1853,7 +1853,7 @@
     "kategori": "Grill",
     "harga": 40000,
     "deskripsi": "Rasakan panasnya hotplate dengan daging sapi, saus spesial, dan sayuran segar",
-    "gambar": "public/images/hotplasapi.webp"
+    "gambar": "/images/hotplasapi.webp"
   },
   {
     "id": 244,
@@ -1861,7 +1861,7 @@
     "kategori": "Grill",
     "harga": 38000,
     "deskripsi": "Rasakan panasnya hotplate dengan cumi tepung, saus spesial, dan sayuran segar",
-    "gambar": "public/images/hotplacumi.webp"
+    "gambar": "/images/hotplacumi.webp"
   },
   {
     "id": 245,
@@ -1869,7 +1869,7 @@
     "kategori": "Roti Bakar",
     "harga": 28000,
     "deskripsi": "Roti bakar topping Ice Cream Vanilla",
-    "gambar": "public/images/rotiicevanil.png"
+    "gambar": "/images/rotiicevanil.png"
   },
   {
     "id": 246,
@@ -1877,7 +1877,7 @@
     "kategori": "Roti Bakar",
     "harga": 28000,
     "deskripsi": "Roti bakar topping Ice Cream Strawberry",
-    "gambar": "public/images/rotiicestraw.png"
+    "gambar": "/images/rotiicestraw.png"
   },
   {
     "id": 247,
@@ -1885,7 +1885,7 @@
     "kategori": "Ayam",
     "harga": 35000,
     "deskripsi": "Nasi Daun jeruk dengan Ayam Goreng",
-    "gambar": "public/images/ayangorengdaunj.png"
+    "gambar": "/images/ayangorengdaunj.png"
   },
   {
     "id": 248,
@@ -1893,7 +1893,7 @@
     "kategori": "Ayam Kampung",
     "harga": 55000,
     "deskripsi": "Nasi Daun jeruk dengan Ayam Kampung",
-    "gambar": "public/images/ayamkampungdaunj.png"
+    "gambar": "/images/ayamkampungdaunj.png"
   },
   {
     "id": 249,
@@ -1901,7 +1901,7 @@
     "kategori": "Bebek",
     "harga": 55000,
     "deskripsi": "Nasi Daun jeruk dengan Bebek Goreng",
-    "gambar": "public/images/bebekdj.jpg"
+    "gambar": "/images/bebekdj.jpg"
   },
   {
     "id": 250,
@@ -1909,7 +1909,7 @@
     "kategori": "Snack",
     "harga": 25000,
     "deskripsi": "Tahu Super Gurih dengan bumbu cabe lada garam",
-    "gambar": "public/images/tahucabe.jpg"
+    "gambar": "/images/tahucabe.jpg"
   },
   {
     "id": 251,
@@ -1917,7 +1917,7 @@
     "kategori": "Menu Baru",
     "harga": 35000,
     "deskripsi": "Daging sapi saus rica rica",
-    "gambar": "public/images/sapirica.jpg"
+    "gambar": "/images/sapirica.jpg"
   },
   {
     "id": 252,
@@ -1925,7 +1925,7 @@
     "kategori": "Menu Baru",
     "harga": 35000,
     "deskripsi": "Daging sapi saus lada hitam",
-    "gambar": "public/images/sapilh.jpg"
+    "gambar": "/images/sapilh.jpg"
   },
   {
     "id": 253,
@@ -1933,7 +1933,7 @@
     "kategori": "Traditional",
     "harga": 18000,
     "deskripsi": "Pempek kampung dengan bumbu khas",
-    "gambar": "public/images/pempekkamp.png"
+    "gambar": "/images/pempekkamp.png"
   },
   {
     "id": 254,
@@ -1941,7 +1941,7 @@
     "kategori": "Traditional",
     "harga": 18000,
     "deskripsi": "Bakwan kampung asli Bangka",
-    "gambar": "public/images/bakwankamp.jpg"
+    "gambar": "/images/bakwankamp.jpg"
   },
   {
     "id": 255,
@@ -1949,7 +1949,7 @@
     "kategori": "Coffee",
     "harga": 28000,
     "deskripsi": "Minuman khas dengan avocado dan kopi[Only ICE]",
-    "gambar": "public/images/avocadocofe.jpg"
+    "gambar": "/images/avocadocofe.jpg"
   },
   {
     "id": 256,
@@ -1957,7 +1957,7 @@
     "kategori": "Coffee",
     "harga": 22000,
     "deskripsi": "Minuman kombinasi antara es krim vanila dengan sensasi espresso",
-    "gambar": "public/images/affogato.jpg"
+    "gambar": "/images/affogato.jpg"
   },
   {
     "id": 257,
@@ -1965,7 +1965,7 @@
     "kategori": "Non Coffee",
     "harga": 20000,
     "deskripsi": "Minuman coklat panas dengan rasa yang lebih pekat",
-    "gambar": "public/images/darkchoco.jpg"
+    "gambar": "/images/darkchoco.jpg"
   },
   {
     "id": 258,
@@ -1973,7 +1973,7 @@
     "kategori": "Non Coffee",
     "harga": 23000,
     "deskripsi": "Minuman coklat dingin dengan rasa yang lebih pekat",
-    "gambar": "public/images/darkchoco.jpg"
+    "gambar": "/images/darkchoco.jpg"
   },
   {
     "id": 259,
@@ -1981,7 +1981,7 @@
     "kategori": "Non Coffee",
     "harga": 23000,
     "deskripsi": "Minuman coklat panas dengan rasa karamel[ ICE +2K ]",
-    "gambar": "public/images/caramelchoco.jpeg"
+    "gambar": "/images/caramelchoco.jpeg"
   },
   {
     "id": 260,
@@ -1989,7 +1989,7 @@
     "kategori": "Non Coffee",
     "harga": 23000,
     "deskripsi": "Minuman coklat panas dengan rasa vanila [ ICE +2K ]",
-    "gambar": "public/images/vanillachoco.jpg"
+    "gambar": "/images/vanillachoco.jpg"
   },
   {
     "id": 261,
@@ -1997,7 +1997,7 @@
     "kategori": "Non Coffee",
     "harga": 23000,
     "deskripsi": "Minuman coklat panas dengan rasa hazelnut [ ICE +2K ]",
-    "gambar": "public/images/hazelnutchoco.jpg"
+    "gambar": "/images/hazelnutchoco.jpg"
   },
   {
     "id": 262,
@@ -2005,6 +2005,6 @@
     "kategori": "Non Coffee",
     "harga": 26000,
     "deskripsi": "Minuman coklat panas dengan rasa pistachio [ ICE +2K ]",
-    "gambar": "public/images/pistaciochoc.png"
+    "gambar": "/images/pistaciochoc.png"
   }
 ]
