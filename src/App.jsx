@@ -99,10 +99,9 @@ function App() {
 
     return filtered;
   }, [searchTerm, selectedCategory, sortBy]);
-
   // Group filtered menu by category
-  const whatsappNumber = '6281234567890';
-  const whatsappMessage = 'Halo Warunk Milenial, saya ingin reservasi meja.';
+  const whatsappNumber = '62895613274765';
+  const whatsappMessage = 'Halo Warunk Milenial, saya ingin melakukan reservasi meja.';
 
   const groupedMenu = useMemo(() => {
     const grouped = {};
@@ -394,7 +393,7 @@ function App() {
         
         {/* TikTok Button */}
         <a
-          href="https://tiktok.com/@warunkmilenial"
+          href="https://lynk.id/a112516515"
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-3 bg-black hover:bg-gray-800 text-white rounded-full px-4 py-3 shadow-lg transition-all mt-3"
