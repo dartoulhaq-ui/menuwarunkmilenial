@@ -288,7 +288,7 @@ function App() {
                       {/* Image Container */}
                       <div className="relative w-full h-32 bg-gray-100 overflow-hidden">
                         <img 
-                          src={item.gambar || 'https://via.placeholder.com/200x150?text=' + encodeURIComponent(item.nama)} 
+                          src= {`${import.meta.env.BASE_URL}${item.gambar}`}
                           alt={item.nama} 
                           className="w-full h-full object-cover hover:scale-105 transition-transform"
                           onError={(e) => e.target.src='https://via.placeholder.com/200x150?text=Menu'}
